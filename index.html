@@ -23,16 +23,57 @@
         .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
 
         .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .product-card { background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 8px; padding: 20px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.03); transition: border-color 0.3s, transform 0.3s; }
-        .product-card:hover { border-color: #e6c328; transform: translateY(-5px); }
-        .product-image { width: 100%; height: 220px; background-color: #f0f0f0; border-radius: 4px; margin-bottom: 15px; border: 1px solid #eaeaea; }
-        .product-name { font-size: 1.4em; margin-bottom: 10px; color: #000000; font-weight: 700; }
-        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 20px; }
-        .btn-order { display: block; background-color: transparent; color: #000000; border: 2px solid #e6c328; padding: 10px; text-decoration: none; border-radius: 4px; font-weight: 700; transition: background-color 0.3s; }
-        .btn-order:hover { background-color: #e6c328; }
+        
+        /* تصميم كرت العطر الاحترافي الجديد */
+        .product-card { 
+            background-color: #ffffff; 
+            border: 1px solid #eeeeee; 
+            border-radius: 12px; 
+            padding: 20px; 
+            width: 320px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            transition: 0.3s; 
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover { border-color: #e6c328; transform: translateY(-5px); box-shadow: 0 8px 25px rgba(230, 195, 40, 0.15); }
+        .product-image { width: 100%; height: 250px; background-color: #f5f5f5; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eaeaea; object-fit: cover; }
+        .product-name { font-size: 1.5em; margin-bottom: 8px; color: #111111; font-weight: 700; }
+        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+
+        /* قسم اختيار الأحجام داخل الكرت */
+        .sizes-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            background-color: #fcfcfc;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+        }
+        .sizes-wrapper input[type="radio"] { display: none; }
+        .sizes-wrapper label {
+            padding: 8px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #555555;
+            transition: 0.3s;
+        }
+        .sizes-wrapper label:hover { border-color: #e6c328; color: #111111; }
+        .sizes-wrapper input[type="radio"]:checked + label {
+            background-color: #111111;
+            border-color: #111111;
+            color: #e6c328;
+        }
+
+        .btn-order { display: block; background-color: #fffcf0; color: #111111; border: 2px solid #e6c328; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 1.1em; transition: 0.3s; cursor: pointer; width: 100%; box-sizing: border-box; }
+        .btn-order:hover { background-color: #e6c328; color: #000000; }
 
         footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
-        footer p { margin: 5px 0; color: #bbbbbb; font-size: 0.9em; }
     </style>
 </head>
 <body>
@@ -60,29 +101,67 @@
         <h2 class="section-title">إصداراتنا المميزة</h2>
         <div class="grid-container">
             
-            <!-- العطر الأول -->
+            <!-- الكرت الأول -->
             <div class="product-card">
                 <img src="" alt="" class="product-image">
                 <h3 class="product-name">عطر النخبة الفاخر</h3>
-                <p class="product-desc">محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية.</p>
-                <!-- هنا تم ربط الزر بصفحة تفاصيل العطر -->
-                <a href="product1.html" class="btn-order">التفاصيل والطلب</a>
+                <p class="product-desc">محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية. ثبات وفوحان يدوم طويلاً.</p>
+                
+                <!-- الأحجام الخاصة بالكرت الأول -->
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-p1" id="p1-35" value="35 مل">
+                    <label for="p1-35">35 مل</label>
+                    
+                    <input type="radio" name="size-p1" id="p1-55" value="55 مل" checked>
+                    <label for="p1-55">55 مل</label>
+                    
+                    <input type="radio" name="size-p1" id="p1-110" value="110 مل">
+                    <label for="p1-110">110 مل</label>
+                </div>
+
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب الآن</button>
             </div>
 
-            <!-- العطر الثاني -->
+            <!-- الكرت الثاني -->
             <div class="product-card">
                 <img src="" alt="" class="product-image">
-                <h3 class="product-name">اسم العطر</h3>
-                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
-                <a href="#" class="btn-order">التفاصيل والطلب</a>
+                <h3 class="product-name">عطر الجاذبية</h3>
+                <p class="product-desc">مزيج منعش من الحمضيات والأخشاب، مثالي للاستخدام اليومي الراقي.</p>
+                
+                <!-- الأحجام الخاصة بالكرت الثاني -->
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-p2" id="p2-35" value="35 مل">
+                    <label for="p2-35">35 مل</label>
+                    
+                    <input type="radio" name="size-p2" id="p2-55" value="55 مل" checked>
+                    <label for="p2-55">55 مل</label>
+                    
+                    <input type="radio" name="size-p2" id="p2-110" value="110 مل">
+                    <label for="p2-110">110 مل</label>
+                </div>
+
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الجاذبية) بحجم ' + size, '_blank');">🛒 اطلب الآن</button>
             </div>
 
-            <!-- العطر الثالث -->
+            <!-- الكرت الثالث -->
             <div class="product-card">
                 <img src="" alt="" class="product-image">
-                <h3 class="product-name">اسم العطر</h3>
-                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
-                <a href="#" class="btn-order">التفاصيل والطلب</a>
+                <h3 class="product-name">عطر السهرة</h3>
+                <p class="product-desc">نوتات دافئة وعميقة تترك أثراً لا يُنسى في المناسبات الخاصة.</p>
+                
+                <!-- الأحجام الخاصة بالكرت الثالث -->
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-p3" id="p3-35" value="35 مل">
+                    <label for="p3-35">35 مل</label>
+                    
+                    <input type="radio" name="size-p3" id="p3-55" value="55 مل" checked>
+                    <label for="p3-55">55 مل</label>
+                    
+                    <input type="radio" name="size-p3" id="p3-110" value="110 مل">
+                    <label for="p3-110">110 مل</label>
+                </div>
+
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p3]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر السهرة) بحجم ' + size, '_blank');">🛒 اطلب الآن</button>
             </div>
 
         </div>
