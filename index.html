@@ -4,40 +4,42 @@
     <meta charset="UTF-8">
     <title>أخِلَّاء للعطور</title>
     <style>
+        /* تم تغيير الخلفية للأصفر والنص للأسود */
         body {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #e5a706; 
+            color: #000000;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
         }
         header {
-            background-color: #111111;
+            background-color: #e6c328;
             padding: 20px;
-            border-bottom: 2px solid #e5a706;
+            border-bottom: 2px solid #000000;
         }
         .logo-text {
-            color: #e6c328;
-            font-size: 24px;
+            color: #000000;
+            font-size: 28px;
             font-weight: bold;
         }
         .hero {
             padding: 80px 20px;
         }
         h1 {
-            color: #e5a706;
+            color: #000000;
             font-size: 3em;
             margin-bottom: 15px;
         }
         .hero p {
             font-size: 1.2em;
-            color: #dddddd;
+            color: #111111;
             margin-bottom: 50px;
+            font-weight: bold;
         }
         .btn-main {
-            background-color: #e5a706;
-            color: #000000;
+            background-color: #000000;
+            color: #e5a706;
             padding: 15px 30px;
             text-decoration: none;
             font-size: 1.2em;
@@ -45,16 +47,15 @@
             border-radius: 5px;
         }
         .btn-main:hover {
-            background-color: #e6c328;
+            background-color: #222222;
         }
 
-        /* تنسيق قسم العطور الجديد */
+        /* تنسيق قسم العطور */
         .products-section {
             padding: 50px 20px;
-            background-color: #0a0a0a;
         }
         .section-title {
-            color: #e5a706;
+            color: #000000;
             font-size: 2.5em;
             margin-bottom: 40px;
         }
@@ -65,19 +66,31 @@
             gap: 30px;
         }
         .product-card {
-            background-color: #111111;
-            border: 1px solid #e5a706;
+            background-color: #e6c328;
+            border: 2px solid #000000;
             border-radius: 8px;
             padding: 30px;
             width: 300px;
         }
+        
+        /* تنسيق مكان الصورة المستقبلي */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #000000; /* لون مؤقت لحين وضع صورتك */
+            border-radius: 5px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
         .product-name {
-            color: #e6c328;
+            color: #000000;
             font-size: 1.5em;
             margin-bottom: 15px;
+            font-weight: bold;
         }
         .product-desc {
-            color: #cccccc;
+            color: #111111;
             margin-bottom: 25px;
             font-size: 1em;
             line-height: 1.6;
@@ -85,16 +98,16 @@
         .btn-order {
             display: inline-block;
             background-color: transparent;
-            color: #e5a706;
-            border: 1px solid #e5a706;
+            color: #000000;
+            border: 2px solid #000000;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
         }
         .btn-order:hover {
-            background-color: #e5a706;
-            color: #000000;
+            background-color: #000000;
+            color: #e5a706;
         }
     </style>
 </head>
@@ -105,34 +118,39 @@
     </header>
 
     <div class="hero">
+        <!-- يمكنك تغيير هذا النص متى شئت -->
         <h1>الرفاهية الهادئة في كل قطرة</h1>
         <p>مجموعتنا المميزة من العطور الفاخرة التي تعكس شخصيتك</p>
         <a href="https://wa.me/201000000000" class="btn-main">تواصل معنا للطلب</a>
     </div>
 
-    <!-- قسم الكتالوج الجديد -->
+    <!-- قسم الكتالوج -->
     <div class="products-section">
         <h2 class="section-title">إصداراتنا المميزة</h2>
         
         <div class="grid-container">
             <!-- العطر الأول -->
             <div class="product-card">
-                <h3 class="product-name">عطر الفخامة الأول</h3>
-                <p class="product-desc">محاكاة دقيقة لأرقى النوتات العطرية، مصمم لأصحاب الذوق الرفيع والمناسبات الخاصة.</p>
+                <!-- هذا السطر مجهز للصورة، سنضع رابطها هنا لاحقاً -->
+                <img src="" alt="صورة العطر" class="product-image">
+                <h3 class="product-name">اسم العطر هنا</h3>
+                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
                 <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
             </div>
 
             <!-- العطر الثاني -->
             <div class="product-card">
-                <h3 class="product-name">عطر الجاذبية</h3>
-                <p class="product-desc">مزيج منعش وفخم يعطيك ثباتاً يدوم طويلاً، مثالي للاستخدام اليومي الراقي.</p>
+                <img src="" alt="صورة العطر" class="product-image">
+                <h3 class="product-name">اسم العطر هنا</h3>
+                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
                 <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
             </div>
 
             <!-- العطر الثالث -->
             <div class="product-card">
-                <h3 class="product-name">عطر النخبة</h3>
-                <p class="product-desc">نوتات دافئة وعميقة تترك أثراً لا يُنسى في كل مكان تتواجد فيه.</p>
+                <img src="" alt="صورة العطر" class="product-image">
+                <h3 class="product-name">اسم العطر هنا</h3>
+                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
                 <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
             </div>
         </div>
