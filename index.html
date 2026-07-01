@@ -4,61 +4,102 @@
     <meta charset="UTF-8">
     <title>أخِلَّاء للعطور</title>
     <style>
-        /* تم تغيير الخلفية للأصفر والنص للأسود */
+        /* الألوان الأساسية: خلفية فاتحة هادئة، ولمسات باللون #e6c328 */
         body {
-            background-color: #e5a706; 
-            color: #000000;
+            background-color: #fafafa;
+            color: #222222;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
+
+        /* شريط التنقل العلوي مقسم مثل قرصة نحلة */
         header {
-            background-color: #e6c328;
-            padding: 20px;
-            border-bottom: 2px solid #000000;
+            background-color: #ffffff;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #e6c328;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .logo-text {
             color: #000000;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
         }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #444444;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #e6c328;
+        }
+        
+        /* الواجهة الترحيبية */
         .hero {
+            text-align: center;
             padding: 80px 20px;
+            background-color: #ffffff;
         }
         h1 {
-            color: #000000;
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            color: #111111;
         }
         .hero p {
             font-size: 1.2em;
-            color: #111111;
-            margin-bottom: 50px;
-            font-weight: bold;
-        }
-        .btn-main {
-            background-color: #000000;
-            color: #e5a706;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-        .btn-main:hover {
-            background-color: #222222;
-        }
-
-        /* تنسيق قسم العطور */
-        .products-section {
-            padding: 50px 20px;
-        }
-        .section-title {
-            color: #000000;
-            font-size: 2.5em;
+            color: #555555;
             margin-bottom: 40px;
         }
+        .btn-main {
+            background-color: #e6c328;
+            color: #000000;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .btn-main:hover {
+            transform: scale(1.05);
+        }
+
+        /* قسم العطور المنسق */
+        .products-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            color: #111111;
+            position: relative;
+            display: inline-block;
+        }
+        /* خط جمالي تحت العنوان */
+        .section-title::after {
+            content: "";
+            width: 50%;
+            height: 3px;
+            background-color: #e6c328;
+            position: absolute;
+            bottom: -15px;
+            right: 25%;
+        }
+
         .grid-container {
             display: flex;
             flex-wrap: wrap;
@@ -66,95 +107,127 @@
             gap: 30px;
         }
         .product-card {
-            background-color: #e6c328;
-            border: 2px solid #000000;
+            background-color: #ffffff;
+            border: 1px solid #eeeeee;
             border-radius: 8px;
-            padding: 30px;
-            width: 300px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .product-card:hover {
+            border-color: #e6c328;
+            transform: translateY(-5px);
         }
         
-        /* تنسيق مكان الصورة المستقبلي */
         .product-image {
             width: 100%;
-            height: 200px;
-            background-color: #000000; /* لون مؤقت لحين وضع صورتك */
-            border-radius: 5px;
+            height: 220px;
+            background-color: #f0f0f0; /* مساحة رمادية أنيقة لحين وضع الصورة */
+            border-radius: 4px;
             margin-bottom: 15px;
-            object-fit: cover;
+            border: 1px solid #eaeaea;
         }
 
         .product-name {
+            font-size: 1.4em;
+            margin-bottom: 10px;
             color: #000000;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            font-weight: bold;
         }
         .product-desc {
-            color: #111111;
-            margin-bottom: 25px;
-            font-size: 1em;
-            line-height: 1.6;
+            color: #666666;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
         .btn-order {
-            display: inline-block;
+            display: block;
             background-color: transparent;
             color: #000000;
-            border: 2px solid #000000;
-            padding: 10px 20px;
+            border: 2px solid #e6c328;
+            padding: 10px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 4px;
             font-weight: bold;
+            transition: background-color 0.3s;
         }
         .btn-order:hover {
-            background-color: #000000;
-            color: #e5a706;
+            background-color: #e6c328;
+        }
+
+        /* الفوتر (الجزء السفلي للموقع) */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 4px solid #e6c328;
+        }
+        footer p {
+            margin: 5px 0;
+            color: #bbbbbb;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
+    <!-- شريط التنقل العلوي -->
     <header>
         <div class="logo-text">أخِلَّاء للعطور</div>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#perfumes">المجموعات العطرية</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+        </nav>
     </header>
 
+    <!-- الواجهة الترحيبية -->
     <div class="hero">
-        <!-- يمكنك تغيير هذا النص متى شئت -->
-        <h1>الرفاهية الهادئة في كل قطرة</h1>
-        <p>مجموعتنا المميزة من العطور الفاخرة التي تعكس شخصيتك</p>
+        <h1>أناقة لا تحتاج إلى لفت الانتباه</h1>
+        <p>محاكاة احترافية تجمع بين الجودة الفائقة والتصميم البسيط المريح للعين.</p>
         <a href="https://wa.me/201000000000" class="btn-main">تواصل معنا للطلب</a>
     </div>
 
-    <!-- قسم الكتالوج -->
-    <div class="products-section">
+    <!-- قسم المنتجات -->
+    <div id="perfumes" class="products-section">
         <h2 class="section-title">إصداراتنا المميزة</h2>
         
         <div class="grid-container">
             <!-- العطر الأول -->
             <div class="product-card">
-                <!-- هذا السطر مجهز للصورة، سنضع رابطها هنا لاحقاً -->
-                <img src="" alt="صورة العطر" class="product-image">
-                <h3 class="product-name">اسم العطر هنا</h3>
-                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
-                <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
+                <img src="" alt="" class="product-image">
+                <h3 class="product-name">اسم العطر</h3>
+                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
+                <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
             </div>
 
             <!-- العطر الثاني -->
             <div class="product-card">
-                <img src="" alt="صورة العطر" class="product-image">
-                <h3 class="product-name">اسم العطر هنا</h3>
-                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
-                <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
+                <img src="" alt="" class="product-image">
+                <h3 class="product-name">اسم العطر</h3>
+                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
+                <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
             </div>
 
             <!-- العطر الثالث -->
             <div class="product-card">
-                <img src="" alt="صورة العطر" class="product-image">
-                <h3 class="product-name">اسم العطر هنا</h3>
-                <p class="product-desc">نبذة عن العطر ومكوناته الجذابة تُكتب هنا.</p>
-                <a href="https://wa.me/201000000000" class="btn-order">اطلب هذا العطر</a>
+                <img src="" alt="" class="product-image">
+                <h3 class="product-name">اسم العطر</h3>
+                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
+                <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
             </div>
         </div>
     </div>
+
+    <!-- الفوتر السُفلي -->
+    <footer>
+        <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
+        <p>جميع الحقوق محفوظة © 2026</p>
+    </footer>
 
 </body>
 </html>
