@@ -4,165 +4,34 @@
     <meta charset="UTF-8">
     <title>أخِلَّاء للعطور</title>
     <style>
-        body {
-            background-color: #fafafa;
-            color: #222222;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #ffffff;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #e6c328;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .logo-text {
-            color: #000000;
-            font-size: 26px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #444444;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #e6c328;
-        }
+        body { background-color: #fafafa; color: #222222; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-text { color: #000000; font-size: 26px; font-weight: bold; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav ul li a { text-decoration: none; color: #444444; font-weight: bold; font-size: 16px; transition: color 0.3s; }
+        nav ul li a:hover { color: #e6c328; }
         
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background-color: #ffffff;
-        }
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            color: #111111;
-        }
-        .hero p {
-            font-size: 1.2em;
-            color: #555555;
-            margin-bottom: 40px;
-        }
-        .btn-main {
-            background-color: #e6c328;
-            color: #000000;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-        .btn-main:hover {
-            transform: scale(1.05);
-        }
+        .hero { text-align: center; padding: 80px 20px; background-color: #ffffff; }
+        h1 { font-size: 2.8em; margin-bottom: 10px; color: #111111; }
+        .hero p { font-size: 1.2em; color: #555555; margin-bottom: 40px; }
+        .btn-main { background-color: #e6c328; color: #000000; padding: 12px 30px; text-decoration: none; font-size: 1.1em; font-weight: bold; border-radius: 4px; transition: transform 0.2s; display: inline-block; }
+        .btn-main:hover { transform: scale(1.05); }
 
-        .products-section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .section-title {
-            font-size: 2.2em;
-            margin-bottom: 50px;
-            color: #111111;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title::after {
-            content: "";
-            width: 50%;
-            height: 3px;
-            background-color: #e6c328;
-            position: absolute;
-            bottom: -15px;
-            right: 25%;
-        }
+        .products-section { padding: 60px 20px; text-align: center; }
+        .section-title { font-size: 2.2em; margin-bottom: 50px; color: #111111; position: relative; display: inline-block; }
+        .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
 
-        .grid-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .product-card {
-            background-color: #ffffff;
-            border: 1px solid #eeeeee;
-            border-radius: 8px;
-            padding: 20px;
-            width: 280px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
-            transition: border-color 0.3s, transform 0.3s;
-        }
-        .product-card:hover {
-            border-color: #e6c328;
-            transform: translateY(-5px);
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 220px;
-            background-color: #f0f0f0;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            border: 1px solid #eaeaea;
-        }
+        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .product-card { background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 8px; padding: 20px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.03); transition: border-color 0.3s, transform 0.3s; }
+        .product-card:hover { border-color: #e6c328; transform: translateY(-5px); }
+        .product-image { width: 100%; height: 220px; background-color: #f0f0f0; border-radius: 4px; margin-bottom: 15px; border: 1px solid #eaeaea; }
+        .product-name { font-size: 1.4em; margin-bottom: 10px; color: #000000; }
+        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 20px; }
+        .btn-order { display: block; background-color: transparent; color: #000000; border: 2px solid #e6c328; padding: 10px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background-color 0.3s; }
+        .btn-order:hover { background-color: #e6c328; }
 
-        .product-name {
-            font-size: 1.4em;
-            margin-bottom: 10px;
-            color: #000000;
-        }
-        .product-desc {
-            color: #666666;
-            font-size: 0.95em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .btn-order {
-            display: block;
-            background-color: transparent;
-            color: #000000;
-            border: 2px solid #e6c328;
-            padding: 10px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .btn-order:hover {
-            background-color: #e6c328;
-        }
-
-        footer {
-            background-color: #111111;
-            color: #ffffff;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            border-top: 4px solid #e6c328;
-        }
-        footer p {
-            margin: 5px 0;
-            color: #bbbbbb;
-            font-size: 0.9em;
-        }
+        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
+        footer p { margin: 5px 0; color: #bbbbbb; font-size: 0.9em; }
     </style>
 </head>
 <body>
@@ -171,11 +40,12 @@
         <div class="logo-text">أخِلَّاء للعطور</div>
         <nav>
             <ul>
+                <!-- هنا تم ربط كل الروابط بأسماء الصفحات الصحيحة -->
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="#">المجموعات العطرية</a></li>
+                <li><a href="perfumes.html">المجموعات العطرية</a></li>
                 <li><a href="offers.html">الباقات والعروض</a></li>
-                <li><a href="#">المسكات</a></li>
-                <li><a href="#">تواصل معنا</a></li>
+                <li><a href="musks.html">المسكات</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
@@ -183,12 +53,11 @@
     <div class="hero">
         <h1>أناقة لا تحتاج إلى لفت الانتباه</h1>
         <p>محاكاة احترافية تجمع بين الجودة الفائقة والتصميم البسيط المريح للعين.</p>
-        <a href="https://wa.me/201000000000" class="btn-main">تواصل معنا للطلب</a>
+        <a href="contact.html" class="btn-main">تواصل معنا للطلب</a>
     </div>
 
-    <div id="perfumes" class="products-section">
+    <div class="products-section">
         <h2 class="section-title">إصداراتنا المميزة</h2>
-        
         <div class="grid-container">
             <div class="product-card">
                 <img src="" alt="" class="product-image">
@@ -196,14 +65,12 @@
                 <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
                 <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
             </div>
-
             <div class="product-card">
                 <img src="" alt="" class="product-image">
                 <h3 class="product-name">اسم العطر</h3>
                 <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
                 <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
             </div>
-
             <div class="product-card">
                 <img src="" alt="" class="product-image">
                 <h3 class="product-name">اسم العطر</h3>
