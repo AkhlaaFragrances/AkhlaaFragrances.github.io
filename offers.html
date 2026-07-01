@@ -2,62 +2,124 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>أخِلَّاء للعطور | العروض والباقات</title>
+    <title>أخِلَّاء للعطور | الباقات والعروض</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fafafa; color: #222222; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; }
-        .logo-text { color: #000000; font-size: 26px; font-weight: bold; }
+        body { background-color: #fafafa; color: #222222; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
+        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-text { color: #000000; font-size: 28px; font-weight: 700; }
         nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #444444; font-weight: bold; font-size: 16px; }
+        nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
         nav ul li a:hover { color: #e6c328; }
         
-        .section-title { text-align: center; font-size: 2.2em; margin: 50px 0; color: #111111; position: relative; }
-        .section-title::after { content: ""; width: 20%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 40%; }
+        .hero { text-align: center; padding: 80px 20px; background-color: #ffffff; }
+        h1 { font-size: 2.8em; margin-bottom: 10px; color: #111111; }
+        .hero p { font-size: 1.2em; color: #555555; margin-bottom: 40px; }
+
+        .products-section { padding: 60px 20px; text-align: center; }
+        .section-title { font-size: 2.2em; margin-bottom: 50px; color: #111111; position: relative; display: inline-block; }
+        .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
+
+        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         
-        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 20px; }
-        .product-card { background-color: #fff8e1; border: 2px solid #e6c328; border-radius: 8px; padding: 20px; width: 280px; text-align: center; }
-        .product-image { width: 100%; height: 220px; background-color: #f0f0f0; border-radius: 4px; margin-bottom: 15px; }
-        .product-name { font-size: 1.4em; margin-bottom: 10px; color: #d32f2f; font-weight: bold; } /* لون مميز لاسم العرض */
-        .product-desc { color: #444444; font-size: 0.95em; line-height: 1.5; margin-bottom: 20px; }
-        .btn-order { display: block; background-color: #e6c328; color: #000000; padding: 10px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        .product-card { 
+            background-color: #ffffff; border: 2px solid #e6c328; border-radius: 12px; padding: 20px; width: 320px; box-shadow: 0 4px 15px rgba(230, 195, 40, 0.1); display: flex; flex-direction: column; text-align: right; 
+        }
+        .product-image-link { display: block; margin-bottom: 15px; position: relative; }
+        .product-image { width: 100%; height: 250px; background-color: #fffdf5; border-radius: 8px; object-fit: cover; }
+        
+        /* شارة العرض المميز */
+        .badge { position: absolute; top: 10px; right: 10px; background-color: #d32f2f; color: #ffffff; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; }
+
+        .product-name-link { text-decoration: none; color: #d32f2f; display: block; margin-bottom: 5px; }
+        .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
+        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 15px; }
+        
+        .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
+        .old-price { text-decoration: line-through; color: #aaaaaa; font-size: 0.8em; margin-right: 10px; }
+
+        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; }
+        .sizes-wrapper input[type="radio"] { display: none; }
+        .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
+        .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
+
+        .btn-order { display: block; background-color: #e6c328; color: #111111; border: none; padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: 0.3s; cursor: pointer; width: 100%; text-align: center; }
+        .btn-order:hover { background-color: #111111; color: #e6c328; }
+
+        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل العلوي: لاحظ أننا عدلنا الروابط هنا لتناسب الأقسام الجديدة -->
     <header>
         <div class="logo-text">أخِلَّاء للعطور</div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="#">المجموعات العطرية</a></li>
+                <li><a href="perfumes.html">المجموعات العطرية</a></li>
                 <li><a href="offers.html">الباقات والعروض</a></li>
-                <li><a href="#">المسكات</a></li>
-                <li><a href="#">تواصل معنا</a></li>
+                <li><a href="musks.html">المسكات</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- محتوى صفحة العروض -->
-    <h2 class="section-title">الباقات والعروض الخاصة</h2>
-    
-    <div class="grid-container">
-        <!-- عرض 1 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">باندل التوفير الفاخر</h3>
-            <p class="product-desc">اشترِ عطرين واحصل على الثالث بنصف السعر. عرض محدود.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب العرض الآن</a>
-        </div>
+    <div class="hero">
+        <h1>عروض حصرية لفترة محدودة</h1>
+        <p>استمتع بأفضل باقات التوفير المصممة خصيصاً لعملائنا المميزين.</p>
+    </div>
 
-        <!-- عرض 2 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">باقة العرسان</h3>
-            <p class="product-desc">مجموعة متكاملة من العطور والمسك في صندوق هدايا فاخر.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب العرض الآن</a>
+    <div class="products-section">
+        <h2 class="section-title">الباقات الخاصة</h2>
+        <div class="grid-container">
+            
+            <div class="product-card">
+                <a href="#" class="product-image-link">
+                    <span class="badge">الأكثر مبيعاً</span>
+                    <img src="" alt="" class="product-image">
+                </a>
+                <a href="#" class="product-name-link"><h3 class="product-name">باندل الـ 3 عطور</h3></a>
+                <p class="product-desc">اختر 3 عطور من مجموعاتنا ووفر أكثر. مثالي للإهداء أو للتنويع اليومي.</p>
+                
+                <div class="product-price" id="price-o1">1200 ج.م <span class="old-price">1500 ج.م</span></div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-o1" id="o1-35" value="بحجم 35 مل للعبوة" onchange="document.getElementById('price-o1').innerHTML='850 ج.م <span class=\'old-price\'>1050 ج.م</span>'">
+                    <label for="o1-35">35 مل</label>
+                    <input type="radio" name="size-o1" id="o1-55" value="بحجم 55 مل للعبوة" checked onchange="document.getElementById('price-o1').innerHTML='1200 ج.م <span class=\'old-price\'>1500 ج.م</span>'">
+                    <label for="o1-55">55 مل</label>
+                    <input type="radio" name="size-o1" id="o1-110" value="بحجم 110 مل للعبوة" onchange="document.getElementById('price-o1').innerHTML='2300 ج.م <span class=\'old-price\'>2700 ج.م</span>'">
+                    <label for="o1-110">110 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-o1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باندل الـ 3 عطور) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
+            </div>
+
+            <div class="product-card">
+                <a href="#" class="product-image-link">
+                    <span class="badge">حصري</span>
+                    <img src="" alt="" class="product-image">
+                </a>
+                <a href="#" class="product-name-link"><h3 class="product-name">باقة العرسان الفاخرة</h3></a>
+                <p class="product-desc">مجموعة متكاملة (عطرين + مسك الطهارة) في صندوق هدايا فخم.</p>
+                
+                <div class="product-price" id="price-o2">1150 ج.م <span class="old-price">1400 ج.م</span></div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-o2" id="o2-35" value="بحجم 35 مل للعطور" onchange="document.getElementById('price-o2').innerHTML='850 ج.م <span class=\'old-price\'>1000 ج.م</span>'">
+                    <label for="o2-35">35 مل</label>
+                    <input type="radio" name="size-o2" id="o2-55" value="بحجم 55 مل للعطور" checked onchange="document.getElementById('price-o2').innerHTML='1150 ج.م <span class=\'old-price\'>1400 ج.م</span>'">
+                    <label for="o2-55">55 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-o2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باقة العرسان الفاخرة) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
+            </div>
+
         </div>
     </div>
+
+    <footer>
+        <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
+        <p>جميع الحقوق محفوظة © 2026</p>
+    </footer>
 
 </body>
 </html>
