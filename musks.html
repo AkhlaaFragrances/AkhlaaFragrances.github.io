@@ -12,10 +12,6 @@
         nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
         nav ul li a:hover { color: #e6c328; }
         
-        .hero { text-align: center; padding: 80px 20px; background-color: #ffffff; }
-        h1 { font-size: 2.8em; margin-bottom: 10px; color: #111111; }
-        .hero p { font-size: 1.2em; color: #555555; margin-bottom: 40px; }
-
         .products-section { padding: 60px 20px; text-align: center; }
         .section-title { font-size: 2.2em; margin-bottom: 50px; color: #111111; position: relative; display: inline-block; }
         .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
@@ -63,35 +59,49 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <h1>مسكات طبيعية بعبق فواح</h1>
-        <p>نقاء وانتعاش يدوم طويلاً، منتقى بعناية لكل عشاق الروائح الهادئة.</p>
-    </div>
-
     <div class="products-section">
         <h2 class="section-title">تشكيلة المسك الفاخرة</h2>
         <div class="grid-container">
             
+            <!-- مسك الرمان -->
             <div class="product-card">
-                <a href="#" class="product-image-link"><img src="" alt="" class="product-image"></a>
-                <a href="#" class="product-name-link"><h3 class="product-name">مسك الرمان</h3></a>
+                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="product1.html" class="product-name-link"><h3 class="product-name">مسك الرمان</h3></a>
                 <div class="product-price" id="price-m1">150 ج.م / 15 مل</div>
+                
                 <div class="sizes-wrapper">
                     <input type="radio" name="size-m1" id="m1-15" value="15 مل" checked onchange="document.getElementById('price-m1').innerText='150 ج.م / 15 مل'">
                     <label for="m1-15">15 مل</label>
                     <input type="radio" name="size-m1" id="m1-30" value="30 مل" onchange="document.getElementById('price-m1').innerText='250 ج.م / 30 مل'">
                     <label for="m1-30">30 مل</label>
+                    <input type="radio" name="size-m1" id="m1-50" value="50 مل" onchange="document.getElementById('price-m1').innerText='400 ج.م / 50 مل'">
+                    <label for="m1-50">50 مل</label>
                 </div>
-                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-m1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (مسك الرمان) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=\'size-m1\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (مسك الرمان) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
+
+            <!-- مسك الطهارة -->
+            <div class="product-card">
+                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="product1.html" class="product-name-link"><h3 class="product-name">مسك الطهارة</h3></a>
+                <div class="product-price" id="price-m2">180 ج.م / 15 مل</div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-m2" id="m2-15" value="15 مل" checked onchange="document.getElementById('price-m2').innerText='180 ج.م / 15 مل'">
+                    <label for="m2-15">15 مل</label>
+                    <input type="radio" name="size-m2" id="m2-30" value="30 مل" onchange="document.getElementById('price-m2').innerText='300 ج.م / 30 مل'">
+                    <label for="m2-30">30 مل</label>
+                    <input type="radio" name="size-m2" id="m2-50" value="50 مل" onchange="document.getElementById('price-m2').innerText='450 ج.م / 50 مل'">
+                    <label for="m2-50">50 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=\'size-m2\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (مسك الطهارة) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
             </div>
 
         </div>
     </div>
-
     <footer>
         <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
         <p>جميع الحقوق محفوظة © 2026</p>
     </footer>
-
 </body>
 </html>
