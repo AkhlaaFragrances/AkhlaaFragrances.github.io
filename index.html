@@ -24,7 +24,7 @@
 
         .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         
-        /* تصميم الكرت المشابه لقرصة نحلة */
+        /* تأثير الماوس (Hover) رجع وبقى أشيك */
         .product-card { 
             background-color: #ffffff; 
             border: 1px solid #eeeeee; 
@@ -34,57 +34,31 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
             display: flex;
             flex-direction: column;
-            text-align: right; /* محاذاة النص لليمين كما في الصورة */
+            text-align: right;
+            transition: all 0.3s ease; /* سر التأثير */
         }
-        .product-image-link { display: block; margin-bottom: 15px; }
-        .product-image { width: 100%; height: 250px; background-color: #f5f5f5; border-radius: 8px; object-fit: cover; }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(230, 195, 40, 0.15);
+            border-color: #e6c328;
+        }
+
+        .product-image-link { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; }
+        .product-image { width: 100%; height: 250px; background-color: #f5f5f5; object-fit: cover; transition: transform 0.3s; }
+        .product-image-link:hover .product-image { transform: scale(1.05); /* تقريب الصورة خفيف */ }
         
-        .product-name-link { text-decoration: none; color: #111111; display: block; margin-bottom: 5px; }
+        .product-name-link { text-decoration: none; color: #111111; display: block; margin-bottom: 5px; transition: color 0.3s; }
+        .product-name-link:hover { color: #e6c328; }
         .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
         
-        /* السعر المتغير */
         .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
 
-        /* أزرار اختيار الحجم */
-        .sizes-wrapper {
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; }
         .sizes-wrapper input[type="radio"] { display: none; }
-        .sizes-wrapper label {
-            padding: 6px 15px;
-            border: 1px solid #e6c328;
-            border-radius: 20px; /* شكل بيضاوي يشبه الصورة */
-            cursor: pointer;
-            font-size: 0.95em;
-            font-weight: 700;
-            color: #b89b1c;
-            transition: 0.3s;
-        }
-        /* تلوين الزر عند الاختيار */
-        .sizes-wrapper input[type="radio"]:checked + label {
-            background-color: #e6c328;
-            color: #ffffff;
-        }
+        .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
+        .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
 
-        /* زر الإضافة للسلة / الطلب */
-        .btn-order { 
-            display: block; 
-            background-color: #fffcf0; 
-            color: #b89b1c; 
-            border: none;
-            padding: 12px; 
-            text-decoration: none; 
-            border-radius: 25px; /* زر دائري الحواف */
-            font-weight: 700; 
-            font-size: 1.1em; 
-            transition: 0.3s; 
-            cursor: pointer; 
-            width: 100%; 
-            text-align: center;
-        }
+        .btn-order { display: block; background-color: #fffcf0; color: #b89b1c; border: none; padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: 0.3s; cursor: pointer; width: 100%; text-align: center; }
         .btn-order:hover { background-color: #e6c328; color: #ffffff; }
 
         footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
@@ -106,8 +80,8 @@
     </header>
 
     <div class="hero">
-        <h1>أناقة لا تحتاج إلى لفت الانتباه</h1>
-        <p>محاكاة احترافية تجمع بين الجودة الفائقة والتصميم البسيط المريح للعين.</p>
+        <h1>أناقة وثقة في كل رشة</h1>
+        <p>عطور مصممة باحترافية لتناسب ذوقك العالي وتكمل شياكتك.</p>
         <a href="contact.html" class="btn-main">تواصل معنا للطلب</a>
     </div>
 
@@ -115,47 +89,28 @@
         <h2 class="section-title">إصداراتنا المميزة</h2>
         <div class="grid-container">
             
-            <!-- الكرت الأول -->
             <div class="product-card">
-                <!-- الصورة قابلة للضغط وتنقل لصفحة التفاصيل -->
-                <a href="product1.html" class="product-image-link">
-                    <img src="" alt="" class="product-image">
-                </a>
+                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="product1.html" class="product-name-link"><h3 class="product-name">عطر النخبة الفاخر</h3></a>
                 
-                <!-- الاسم قابل للضغط وينقل لصفحة التفاصيل -->
-                <a href="product1.html" class="product-name-link">
-                    <h3 class="product-name">عطر النخبة الفاخر</h3>
-                </a>
-                
-                <!-- السعر الافتراضي -->
                 <div class="product-price" id="price-p1">500 ج.م / 55 مل</div>
                 
-                <!-- أزرار الأحجام مع برمجة لتغيير السعر أعلاه -->
                 <div class="sizes-wrapper">
-                    <!-- حجم 35 -->
                     <input type="radio" name="size-p1" id="p1-35" value="35 مل" onchange="document.getElementById('price-p1').innerText='350 ج.م / 35 مل'">
                     <label for="p1-35">35 مل</label>
                     
-                    <!-- حجم 55 (مختار كافتراضي) -->
                     <input type="radio" name="size-p1" id="p1-55" value="55 مل" checked onchange="document.getElementById('price-p1').innerText='500 ج.م / 55 مل'">
                     <label for="p1-55">55 مل</label>
                     
-                    <!-- حجم 110 -->
                     <input type="radio" name="size-p1" id="p1-110" value="110 مل" onchange="document.getElementById('price-p1').innerText='900 ج.م / 110 مل'">
                     <label for="p1-110">110 مل</label>
                 </div>
-
                 <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
             </div>
 
-             <!-- الكرت الثاني -->
              <div class="product-card">
-                <a href="#" class="product-image-link">
-                    <img src="" alt="" class="product-image">
-                </a>
-                <a href="#" class="product-name-link">
-                    <h3 class="product-name">عطر الجاذبية</h3>
-                </a>
+                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="product1.html" class="product-name-link"><h3 class="product-name">عطر الجاذبية</h3></a>
                 
                 <div class="product-price" id="price-p2">450 ج.م / 55 مل</div>
                 
@@ -169,7 +124,6 @@
                     <input type="radio" name="size-p2" id="p2-110" value="110 مل" onchange="document.getElementById('price-p2').innerText='800 ج.م / 110 مل'">
                     <label for="p2-110">110 مل</label>
                 </div>
-
                 <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الجاذبية) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
             </div>
 
