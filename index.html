@@ -24,36 +24,23 @@
 
         .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         
-        /* تأثير الماوس (Hover) رجع وبقى أشيك */
+        /* الكرت بالكامل أصبح قابلاً للضغط كزرار كبير */
         .product-card { 
-            background-color: #ffffff; 
-            border: 1px solid #eeeeee; 
-            border-radius: 12px; 
-            padding: 20px; 
-            width: 300px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            transition: all 0.3s ease; /* سر التأثير */
+            background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 12px; padding: 20px; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; text-align: right; transition: all 0.3s ease;
+            cursor: pointer; /* تغيير شكل الماوس ليدل على أنه قابل للضغط */
         }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(230, 195, 40, 0.15);
-            border-color: #e6c328;
-        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(230, 195, 40, 0.15); border-color: #e6c328; }
 
-        .product-image-link { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; }
+        .product-image-container { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; }
         .product-image { width: 100%; height: 250px; background-color: #f5f5f5; object-fit: cover; transition: transform 0.3s; }
-        .product-image-link:hover .product-image { transform: scale(1.05); /* تقريب الصورة خفيف */ }
+        .product-card:hover .product-image { transform: scale(1.05); }
         
-        .product-name-link { text-decoration: none; color: #111111; display: block; margin-bottom: 5px; transition: color 0.3s; }
-        .product-name-link:hover { color: #e6c328; }
-        .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
+        .product-name { color: #111111; font-size: 1.6em; margin: 0 0 5px 0; font-weight: 700; transition: color 0.3s; }
+        .product-card:hover .product-name { color: #e6c328; }
         
         .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
 
-        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; }
+        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; cursor: default; }
         .sizes-wrapper input[type="radio"] { display: none; }
         .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
         .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
@@ -89,13 +76,17 @@
         <h2 class="section-title">إصداراتنا المميزة</h2>
         <div class="grid-container">
             
-            <div class="product-card">
-                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
-                <a href="product1.html" class="product-name-link"><h3 class="product-name">عطر النخبة الفاخر</h3></a>
+            <div class="product-card" onclick="window.location.href='product1.html';">
+                
+                <div class="product-image-container">
+                    <img src="" alt="" class="product-image">
+                </div>
+                
+                <h3 class="product-name">عطر النخبة الفاخر</h3>
                 
                 <div class="product-price" id="price-p1">500 ج.م / 55 مل</div>
                 
-                <div class="sizes-wrapper">
+                <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p1" id="p1-35" value="35 مل" onchange="document.getElementById('price-p1').innerText='350 ج.م / 35 مل'">
                     <label for="p1-35">35 مل</label>
                     
@@ -105,16 +96,21 @@
                     <input type="radio" name="size-p1" id="p1-110" value="110 مل" onchange="document.getElementById('price-p1').innerText='900 ج.م / 110 مل'">
                     <label for="p1-110">110 مل</label>
                 </div>
-                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+
+                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-p1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
             </div>
 
-             <div class="product-card">
-                <a href="product1.html" class="product-image-link"><img src="" alt="" class="product-image"></a>
-                <a href="product1.html" class="product-name-link"><h3 class="product-name">عطر الجاذبية</h3></a>
+             <div class="product-card" onclick="window.location.href='product1.html';">
+                
+                <div class="product-image-container">
+                    <img src="" alt="" class="product-image">
+                </div>
+                
+                <h3 class="product-name">عطر الجاذبية</h3>
                 
                 <div class="product-price" id="price-p2">450 ج.م / 55 مل</div>
                 
-                <div class="sizes-wrapper">
+                <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p2" id="p2-35" value="35 مل" onchange="document.getElementById('price-p2').innerText='300 ج.م / 35 مل'">
                     <label for="p2-35">35 مل</label>
                     
@@ -124,7 +120,8 @@
                     <input type="radio" name="size-p2" id="p2-110" value="110 مل" onchange="document.getElementById('price-p2').innerText='800 ج.م / 110 مل'">
                     <label for="p2-110">110 مل</label>
                 </div>
-                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الجاذبية) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+
+                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-p2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الجاذبية) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
             </div>
 
         </div>
