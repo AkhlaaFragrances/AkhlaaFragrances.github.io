@@ -24,32 +24,70 @@
 
         .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         
-        /* جعل كرت العطر بالكامل قابلاً للضغط */
+        /* تصميم الكرت المشابه لقرصة نحلة */
         .product-card { 
             background-color: #ffffff; 
             border: 1px solid #eeeeee; 
-            border-radius: 8px; 
+            border-radius: 12px; 
             padding: 20px; 
-            width: 280px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.03); 
-            transition: border-color 0.3s, transform 0.3s; 
-            display: block; /* مهم لجعله رابط */
-            text-decoration: none; /* إزالة الخطوط من الرابط */
-            color: inherit; /* الحفاظ على لون النص الأصلي */
+            width: 300px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            display: flex;
+            flex-direction: column;
+            text-align: right; /* محاذاة النص لليمين كما في الصورة */
         }
-        .product-card:hover { border-color: #e6c328; transform: translateY(-5px); }
-        .product-image { width: 100%; height: 220px; background-color: #f0f0f0; border-radius: 4px; margin-bottom: 15px; border: 1px solid #eaeaea; }
-        .product-name { font-size: 1.4em; margin-bottom: 10px; color: #000000; font-weight: 700; }
-        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 15px; }
+        .product-image-link { display: block; margin-bottom: 15px; }
+        .product-image { width: 100%; height: 250px; background-color: #f5f5f5; border-radius: 8px; object-fit: cover; }
         
-        /* نص يوضح الأحجام المتاحة */
-        .available-sizes { color: #888888; font-size: 0.85em; font-weight: bold; margin-bottom: 20px; }
+        .product-name-link { text-decoration: none; color: #111111; display: block; margin-bottom: 5px; }
+        .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
+        
+        /* السعر المتغير */
+        .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
 
-        .btn-order { display: block; background-color: transparent; color: #000000; border: 2px solid #e6c328; padding: 10px; text-decoration: none; border-radius: 4px; font-weight: 700; transition: background-color 0.3s; text-align: center; }
-        .product-card:hover .btn-order { background-color: #e6c328; }
+        /* أزرار اختيار الحجم */
+        .sizes-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .sizes-wrapper input[type="radio"] { display: none; }
+        .sizes-wrapper label {
+            padding: 6px 15px;
+            border: 1px solid #e6c328;
+            border-radius: 20px; /* شكل بيضاوي يشبه الصورة */
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #b89b1c;
+            transition: 0.3s;
+        }
+        /* تلوين الزر عند الاختيار */
+        .sizes-wrapper input[type="radio"]:checked + label {
+            background-color: #e6c328;
+            color: #ffffff;
+        }
+
+        /* زر الإضافة للسلة / الطلب */
+        .btn-order { 
+            display: block; 
+            background-color: #fffcf0; 
+            color: #b89b1c; 
+            border: none;
+            padding: 12px; 
+            text-decoration: none; 
+            border-radius: 25px; /* زر دائري الحواف */
+            font-weight: 700; 
+            font-size: 1.1em; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            width: 100%; 
+            text-align: center;
+        }
+        .btn-order:hover { background-color: #e6c328; color: #ffffff; }
 
         footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
-        footer p { margin: 5px 0; color: #bbbbbb; font-size: 0.9em; }
     </style>
 </head>
 <body>
@@ -77,32 +115,63 @@
         <h2 class="section-title">إصداراتنا المميزة</h2>
         <div class="grid-container">
             
-            <!-- العطر الأول -->
-            <a href="product1.html" class="product-card">
-                <img src="" alt="" class="product-image">
-                <h3 class="product-name">عطر النخبة الفاخر</h3>
-                <p class="product-desc">محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية.</p>
-                <div class="available-sizes">متوفر بأحجام: 35 مل، 55 مل، 110 مل</div>
-                <div class="btn-order">التفاصيل والطلب</div>
-            </a>
+            <!-- الكرت الأول -->
+            <div class="product-card">
+                <!-- الصورة قابلة للضغط وتنقل لصفحة التفاصيل -->
+                <a href="product1.html" class="product-image-link">
+                    <img src="" alt="" class="product-image">
+                </a>
+                
+                <!-- الاسم قابل للضغط وينقل لصفحة التفاصيل -->
+                <a href="product1.html" class="product-name-link">
+                    <h3 class="product-name">عطر النخبة الفاخر</h3>
+                </a>
+                
+                <!-- السعر الافتراضي -->
+                <div class="product-price" id="price-p1">500 ج.م / 55 مل</div>
+                
+                <!-- أزرار الأحجام مع برمجة لتغيير السعر أعلاه -->
+                <div class="sizes-wrapper">
+                    <!-- حجم 35 -->
+                    <input type="radio" name="size-p1" id="p1-35" value="35 مل" onchange="document.getElementById('price-p1').innerText='350 ج.م / 35 مل'">
+                    <label for="p1-35">35 مل</label>
+                    
+                    <!-- حجم 55 (مختار كافتراضي) -->
+                    <input type="radio" name="size-p1" id="p1-55" value="55 مل" checked onchange="document.getElementById('price-p1').innerText='500 ج.م / 55 مل'">
+                    <label for="p1-55">55 مل</label>
+                    
+                    <!-- حجم 110 -->
+                    <input type="radio" name="size-p1" id="p1-110" value="110 مل" onchange="document.getElementById('price-p1').innerText='900 ج.م / 110 مل'">
+                    <label for="p1-110">110 مل</label>
+                </div>
 
-            <!-- العطر الثاني -->
-            <a href="#" class="product-card">
-                <img src="" alt="" class="product-image">
-                <h3 class="product-name">اسم العطر</h3>
-                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
-                <div class="available-sizes">متوفر بأحجام: 35 مل، 55 مل، 110 مل</div>
-                <div class="btn-order">التفاصيل والطلب</div>
-            </a>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
 
-            <!-- العطر الثالث -->
-            <a href="#" class="product-card">
-                <img src="" alt="" class="product-image">
-                <h3 class="product-name">اسم العطر</h3>
-                <p class="product-desc">مكان مخصص لوصف دقيق لمكونات العطر ومميزاته.</p>
-                <div class="available-sizes">متوفر بأحجام: 35 مل، 55 مل، 110 مل</div>
-                <div class="btn-order">التفاصيل والطلب</div>
-            </a>
+             <!-- الكرت الثاني -->
+             <div class="product-card">
+                <a href="#" class="product-image-link">
+                    <img src="" alt="" class="product-image">
+                </a>
+                <a href="#" class="product-name-link">
+                    <h3 class="product-name">عطر الجاذبية</h3>
+                </a>
+                
+                <div class="product-price" id="price-p2">450 ج.م / 55 مل</div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-p2" id="p2-35" value="35 مل" onchange="document.getElementById('price-p2').innerText='300 ج.م / 35 مل'">
+                    <label for="p2-35">35 مل</label>
+                    
+                    <input type="radio" name="size-p2" id="p2-55" value="55 مل" checked onchange="document.getElementById('price-p2').innerText='450 ج.م / 55 مل'">
+                    <label for="p2-55">55 مل</label>
+                    
+                    <input type="radio" name="size-p2" id="p2-110" value="110 مل" onchange="document.getElementById('price-p2').innerText='800 ج.م / 110 مل'">
+                    <label for="p2-110">110 مل</label>
+                </div>
+
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-p2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الجاذبية) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
 
         </div>
     </div>
