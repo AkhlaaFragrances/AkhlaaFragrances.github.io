@@ -18,23 +18,27 @@
 
         .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         
+        /* الكرت قابل للضغط بالكامل */
         .product-card { 
             background-color: #ffffff; border: 2px solid #e6c328; border-radius: 12px; padding: 20px; width: 320px; box-shadow: 0 4px 15px rgba(230, 195, 40, 0.1); display: flex; flex-direction: column; text-align: right; transition: all 0.3s ease;
+            cursor: pointer;
         }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(230, 195, 40, 0.2); }
 
-        .product-image-link { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; position: relative; }
+        .product-image-container { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; position: relative; }
         .product-image { width: 100%; height: 250px; background-color: #fffdf5; object-fit: cover; transition: transform 0.3s; }
-        .product-image-link:hover .product-image { transform: scale(1.05); }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        
         .badge { position: absolute; top: 10px; right: 10px; background-color: #d32f2f; color: #ffffff; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; z-index: 2; }
 
-        .product-name-link { text-decoration: none; color: #d32f2f; display: block; margin-bottom: 5px; transition: color 0.3s; }
-        .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
+        .product-name { color: #d32f2f; font-size: 1.6em; margin: 0 0 5px 0; font-weight: 700; transition: color 0.3s; }
+        .product-card:hover .product-name { color: #111111; }
         
         .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .old-price { text-decoration: line-through; color: #aaaaaa; font-size: 0.8em; }
 
-        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; }
+        /* منع التداخل */
+        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; cursor: default; }
         .sizes-wrapper input[type="radio"] { display: none; }
         .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
         .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
@@ -64,20 +68,21 @@
         <h2 class="section-title">الباقات الخاصة</h2>
         <div class="grid-container">
             
-            <!-- عرض باندل الـ 3 عطور -->
-            <div class="product-card">
-                <a href="product1.html" class="product-image-link">
+            <div class="product-card" onclick="window.location.href='product1.html';">
+                
+                <div class="product-image-container">
                     <span class="badge">الأكثر مبيعاً</span>
                     <img src="" alt="" class="product-image">
-                </a>
-                <a href="product1.html" class="product-name-link"><h3 class="product-name">باندل الـ 3 عطور</h3></a>
+                </div>
+                
+                <h3 class="product-name">باندل الـ 3 عطور</h3>
                 
                 <div class="product-price">
                     <span id="new-price-o1">1200 ج.م</span>
                     <span class="old-price" id="old-price-o1">1500 ج.م</span>
                 </div>
                 
-                <div class="sizes-wrapper">
+                <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-o1" id="o1-35" value="بحجم 35 مل" onchange="document.getElementById('new-price-o1').innerText='850 ج.م'; document.getElementById('old-price-o1').innerText='1050 ج.م';">
                     <label for="o1-35">35 مل</label>
                     
@@ -87,30 +92,31 @@
                     <input type="radio" name="size-o1" id="o1-110" value="بحجم 110 مل" onchange="document.getElementById('new-price-o1').innerText='2300 ج.م'; document.getElementById('old-price-o1').innerText='2700 ج.م';">
                     <label for="o1-110">110 مل</label>
                 </div>
-                <button class="btn-order" onclick="let size = document.querySelector('input[name=\'size-o1\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باندل الـ 3 عطور) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
+                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-o1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باندل الـ 3 عطور) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
             </div>
 
-            <!-- عرض باقة العرسان -->
-            <div class="product-card">
-                <a href="product1.html" class="product-image-link">
+            <div class="product-card" onclick="window.location.href='product1.html';">
+                
+                <div class="product-image-container">
                     <span class="badge">حصري</span>
                     <img src="" alt="" class="product-image">
-                </a>
-                <a href="product1.html" class="product-name-link"><h3 class="product-name">باقة العرسان الفاخرة</h3></a>
+                </div>
+                
+                <h3 class="product-name">باقة العرسان الفاخرة</h3>
                 
                 <div class="product-price">
                     <span id="new-price-o2">1150 ج.م</span>
                     <span class="old-price" id="old-price-o2">1400 ج.م</span>
                 </div>
                 
-                <div class="sizes-wrapper">
+                <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-o2" id="o2-35" value="بحجم 35 مل" onchange="document.getElementById('new-price-o2').innerText='850 ج.م'; document.getElementById('old-price-o2').innerText='1000 ج.م';">
                     <label for="o2-35">35 مل</label>
                     
                     <input type="radio" name="size-o2" id="o2-55" value="بحجم 55 مل" checked onchange="document.getElementById('new-price-o2').innerText='1150 ج.م'; document.getElementById('old-price-o2').innerText='1400 ج.م';">
                     <label for="o2-55">55 مل</label>
                 </div>
-                <button class="btn-order" onclick="let size = document.querySelector('input[name=\'size-o2\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باقة العرسان الفاخرة) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
+                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-o2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باقة العرسان الفاخرة) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
             </div>
 
         </div>
