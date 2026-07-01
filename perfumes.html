@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>أخِلَّاء للعطور | المجموعات العطرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fafafa; color: #222222; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; }
-        .logo-text { color: #000000; font-size: 26px; font-weight: bold; }
+        body { background-color: #fafafa; color: #222222; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
+        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-text { color: #000000; font-size: 28px; font-weight: 700; }
         nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #444444; font-weight: bold; font-size: 16px; }
+        nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
         nav ul li a:hover { color: #e6c328; }
         
-        /* تنسيق قسم الكتالوج */
-        .section-title { text-align: center; font-size: 2.2em; margin: 50px 0; color: #111111; position: relative; }
-        .section-title::after { content: ""; width: 20%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 40%; }
-        
-        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 20px 50px; margin-bottom: 60px; }
-        .product-card { background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 8px; padding: 20px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.03); transition: border-color 0.3s, transform 0.3s; }
-        .product-card:hover { border-color: #e6c328; transform: translateY(-5px); }
-        .product-image { width: 100%; height: 220px; background-color: #f0f0f0; border-radius: 4px; margin-bottom: 15px; border: 1px solid #eaeaea; }
-        .product-name { font-size: 1.4em; margin-bottom: 10px; color: #000000; }
-        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 20px; }
-        .btn-order { display: block; text-align: center; background-color: transparent; color: #000000; border: 2px solid #e6c328; padding: 10px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background-color 0.3s; }
-        .btn-order:hover { background-color: #e6c328; }
+        .hero { text-align: center; padding: 80px 20px; background-color: #ffffff; }
+        h1 { font-size: 2.8em; margin-bottom: 10px; color: #111111; }
+        .hero p { font-size: 1.2em; color: #555555; margin-bottom: 40px; }
 
-        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; border-top: 4px solid #e6c328; }
-        footer p { margin: 5px 0; color: #bbbbbb; font-size: 0.9em; }
+        .products-section { padding: 60px 20px; text-align: center; }
+        .section-title { font-size: 2.2em; margin-bottom: 50px; color: #111111; position: relative; display: inline-block; }
+        .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
+
+        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        
+        .product-card { 
+            background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 12px; padding: 20px; width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; text-align: right; 
+        }
+        .product-image-link { display: block; margin-bottom: 15px; }
+        .product-image { width: 100%; height: 250px; background-color: #f5f5f5; border-radius: 8px; object-fit: cover; }
+        
+        .product-name-link { text-decoration: none; color: #111111; display: block; margin-bottom: 5px; }
+        .product-name { font-size: 1.6em; margin: 0; font-weight: 700; }
+        .product-desc { color: #666666; font-size: 0.95em; line-height: 1.5; margin-bottom: 15px; }
+        
+        .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
+
+        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; }
+        .sizes-wrapper input[type="radio"] { display: none; }
+        .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
+        .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
+
+        .btn-order { display: block; background-color: #fffcf0; color: #b89b1c; border: none; padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: 0.3s; cursor: pointer; width: 100%; text-align: center; }
+        .btn-order:hover { background-color: #e6c328; color: #ffffff; }
+
+        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل العلوي -->
     <header>
         <div class="logo-text">أخِلَّاء للعطور</div>
         <nav>
@@ -38,49 +54,78 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="perfumes.html">المجموعات العطرية</a></li>
                 <li><a href="offers.html">الباقات والعروض</a></li>
-                <li><a href="#">المسكات</a></li>
+                <li><a href="musks.html">المسكات</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
 
-    <h2 class="section-title">جميع إصداراتنا العطرية</h2>
-    
-    <div class="grid-container">
-        <!-- عطر 1 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">عطر النخبة</h3>
-            <p class="product-desc">محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية، مستوحاة من فخامة خطوط لويس فيتون.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
-        </div>
+    <div class="hero">
+        <h1>اكتشف عطرك المفضل</h1>
+        <p>تشكيلة واسعة من أرقى محاكيات العطور العالمية المصممة لتدوم طويلاً.</p>
+    </div>
 
-        <!-- عطر 2 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">عطر الجاذبية</h3>
-            <p class="product-desc">تركيبة غنية تعكس عبق النيش الفاخر، بلمسات تحاكي إبداعات زيرجوف الجذابة.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
-        </div>
+    <div class="products-section">
+        <h2 class="section-title">جميع إصداراتنا العطرية</h2>
+        <div class="grid-container">
+            
+            <div class="product-card">
+                <a href="#" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="#" class="product-name-link"><h3 class="product-name">عطر النخبة الفاخر</h3></a>
+                <p class="product-desc">محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية.</p>
+                
+                <div class="product-price" id="price-c1">500 ج.م / 55 مل</div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-c1" id="c1-35" value="35 مل" onchange="document.getElementById('price-c1').innerText='350 ج.م / 35 مل'">
+                    <label for="c1-35">35 مل</label>
+                    <input type="radio" name="size-c1" id="c1-55" value="55 مل" checked onchange="document.getElementById('price-c1').innerText='500 ج.م / 55 مل'">
+                    <label for="c1-55">55 مل</label>
+                    <input type="radio" name="size-c1" id="c1-110" value="110 مل" onchange="document.getElementById('price-c1').innerText='900 ج.م / 110 مل'">
+                    <label for="c1-110">110 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-c1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
 
-        <!-- عطر 3 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">عطر الانتعاش</h3>
-            <p class="product-desc">نوتات حمضية منعشة ممزوجة بالأخشاب، مثالي للاستخدام اليومي ويناسب الجنسين.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
-        </div>
-        
-        <!-- عطر 4 -->
-        <div class="product-card">
-            <img src="" alt="" class="product-image">
-            <h3 class="product-name">عطر السهرة</h3>
-            <p class="product-desc">مزيج دافئ من التوابل والجلود يمنحك ثباتاً وفوحاناً يدوم لساعات طويلة.</p>
-            <a href="https://wa.me/201000000000" class="btn-order">اطلب عبر واتساب</a>
+            <div class="product-card">
+                <a href="#" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="#" class="product-name-link"><h3 class="product-name">عطر الانتعاش الصيفي</h3></a>
+                <p class="product-desc">نوتات حمضية منعشة ممزوجة بالأخشاب، مثالي للاستخدام اليومي.</p>
+                
+                <div class="product-price" id="price-c2">450 ج.م / 55 مل</div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-c2" id="c2-35" value="35 مل" onchange="document.getElementById('price-c2').innerText='300 ج.م / 35 مل'">
+                    <label for="c2-35">35 مل</label>
+                    <input type="radio" name="size-c2" id="c2-55" value="55 مل" checked onchange="document.getElementById('price-c2').innerText='450 ج.م / 55 مل'">
+                    <label for="c2-55">55 مل</label>
+                    <input type="radio" name="size-c2" id="c2-110" value="110 مل" onchange="document.getElementById('price-c2').innerText='800 ج.م / 110 مل'">
+                    <label for="c2-110">110 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-c2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر الانتعاش الصيفي) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
+
+             <div class="product-card">
+                <a href="#" class="product-image-link"><img src="" alt="" class="product-image"></a>
+                <a href="#" class="product-name-link"><h3 class="product-name">عطر السهرة</h3></a>
+                <p class="product-desc">مزيج دافئ من التوابل والجلود يمنحك ثباتاً وفوحاناً يدوم طويلاً.</p>
+                
+                <div class="product-price" id="price-c3">550 ج.م / 55 مل</div>
+                
+                <div class="sizes-wrapper">
+                    <input type="radio" name="size-c3" id="c3-35" value="35 مل" onchange="document.getElementById('price-c3').innerText='380 ج.م / 35 مل'">
+                    <label for="c3-35">35 مل</label>
+                    <input type="radio" name="size-c3" id="c3-55" value="55 مل" checked onchange="document.getElementById('price-c3').innerText='550 ج.م / 55 مل'">
+                    <label for="c3-55">55 مل</label>
+                    <input type="radio" name="size-c3" id="c3-110" value="110 مل" onchange="document.getElementById('price-c3').innerText='950 ج.م / 110 مل'">
+                    <label for="c3-110">110 مل</label>
+                </div>
+                <button class="btn-order" onclick="let size = document.querySelector('input[name=size-c3]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر السهرة) بحجم ' + size, '_blank');">🛒 اطلب عبر واتساب</button>
+            </div>
+
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer>
         <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
         <p>جميع الحقوق محفوظة © 2026</p>
