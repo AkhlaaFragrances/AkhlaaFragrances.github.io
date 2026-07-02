@@ -6,7 +6,7 @@
     <title>أخِلَّاء للعطور | الرئيسية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* هوية البراند: أسود فاخر وأصفر جذاب */
+        /* الهوية البصرية الفاخرة: أسود عميق وأصفر ذهبي */
         :root {
             --brand-yellow: #e6c328;
             --dark-bg: #0a0a0a;
@@ -17,83 +17,71 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        
-        /* الخلفية الأساسية سوداء للفخامة */
         body { background-color: var(--dark-bg); color: var(--text-light); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
-        
+
         /* القائمة العلوية */
         header { background-color: var(--dark-bg); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--brand-yellow); position: sticky; top: 0; z-index: 100; }
         .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
-        nav ul li a { text-decoration: none; color: var(--text-light); font-weight: 700; font-size: 15px; transition: color 0.3s ease; }
+        nav ul li a { text-decoration: none; color: var(--text-light); font-weight: 700; font-size: 16px; transition: color 0.3s ease; }
         nav ul li a:hover { color: var(--brand-yellow); }
         
-        /* أيقونة السلة */
         .cart-icon { position: relative; font-size: 1.2em; color: var(--brand-yellow) !important; }
-        .cart-badge { position: absolute; top: -10px; right: -15px; background-color: #d32f2f; color: white; border-radius: 50%; padding: 3px 7px; font-size: 0.7em; font-weight: bold; }
-
+        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: #d32f2f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7em; font-weight: bold; }
         @media (min-width: 768px) { nav ul { margin-top: 0; gap: 25px; } }
 
-        /* الواجهة الأولى (Hero) بتأثير قرصة نحلة */
-        .hero { position: relative; height: 70vh; min-height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-        
-        /* صورة مع طبقة صفراء غالبة */
+        /* الأنيميشن والواجهة (Hero) */
+        .hero { position: relative; height: 70vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--dark-bg); }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            /* هنا نضع الطبقة الصفراء فوق الصورة */
-            background: linear-gradient(rgba(230, 195, 40, 0.85), rgba(230, 195, 40, 0.85)), url('hero-bg.jpg') center/cover;
+            /* صورة مؤقتة تعطي طابع الفخامة مع تأثير التعتيم */
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
             animation: zoomIn 15s infinite alternate ease-in-out;
             z-index: 1;
         }
         @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.1); } }
-        
         .hero-content { position: relative; z-index: 2; padding: 20px; animation: fadeIn 1.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .hero h1 { font-size: 3.5em; color: var(--dark-bg); margin-bottom: 15px; font-weight: 700; }
-        .hero p { font-size: 1.4em; color: var(--dark-bg); font-weight: 700; margin-bottom: 30px; }
-        .btn-main { background-color: var(--dark-bg); color: var(--brand-yellow); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 700; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--dark-bg); }
-        .btn-main:hover { background-color: transparent; color: var(--dark-bg); }
+        .hero h1 { font-size: 3.5em; color: var(--brand-yellow); margin-bottom: 10px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.4em; color: var(--text-light); font-weight: 400; margin-bottom: 30px; }
+        .btn-main { background-color: var(--brand-yellow); color: var(--dark-bg); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 700; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--brand-yellow);}
+        .btn-main:hover { background-color: transparent; color: var(--brand-yellow); }
 
-        .section-wrapper { padding: 60px 5%; text-align: center; }
-        .section-title { font-size: 2.2em; margin-bottom: 50px; color: var(--brand-yellow); position: relative; display: inline-block; font-weight: 700; }
+        /* التنسيق العام للأقسام */
+        .section-wrapper { padding: 80px 5%; text-align: center; }
+        .section-title { font-size: 2.5em; margin-bottom: 50px; color: var(--brand-yellow); position: relative; display: inline-block; font-weight: 700; }
+        .section-title::after { content: ""; width: 50%; height: 3px; background-color: var(--brand-yellow); position: absolute; bottom: -15px; right: 25%; }
 
-        /* أقسام الفئات (كروت بصور مثل قرصة نحلة) */
-        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .category-card { position: relative; background-color: var(--card-bg); height: 250px; border-radius: 12px; text-decoration: none; overflow: hidden; border: 2px solid #333; transition: all 0.4s ease; display: block; }
-        .category-card:hover { border-color: var(--brand-yellow); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(230,195,40,0.1); }
-        .category-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s; }
-        .category-card:hover .category-img { opacity: 1; transform: scale(1.05); }
-        .category-title { position: absolute; bottom: 0; width: 100%; background: rgba(10, 10, 10, 0.9); color: var(--text-light); padding: 15px; font-size: 1.5em; font-weight: 700; border-top: 2px solid var(--brand-yellow); }
+        /* قسم الفئات */
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .category-card { background-color: var(--card-bg); height: 180px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text-light); font-size: 1.8em; font-weight: 700; transition: all 0.4s ease; border: 1px solid #333; }
+        .category-card:hover { border-color: var(--brand-yellow); color: var(--brand-yellow); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(230, 195, 40, 0.1); }
 
-        /* المنتجات */
+        /* قسم المنتجات التفاعلية */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; justify-items: center; }
-        .product-card { background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 20px; width: 100%; max-width: 320px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); }
-        
+        .product-card { background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 20px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); box-shadow: 0 15px 30px rgba(230, 195, 40, 0.1); }
         .product-image-container { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; }
         .product-image { width: 100%; height: 250px; background-color: #222; object-fit: cover; transition: transform 0.5s ease; }
         .product-card:hover .product-image { transform: scale(1.08); }
-        
         .product-name { color: var(--text-light); font-size: 1.6em; margin: 0 0 10px 0; font-weight: 700; transition: color 0.3s ease; }
         .product-card:hover .product-name { color: var(--brand-yellow); }
-        .product-price { color: var(--brand-yellow); font-size: 1.4em; font-weight: 700; margin-bottom: 15px; }
-
+        .product-price { color: var(--brand-yellow); font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
+        
         .sizes-wrapper { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; cursor: default; }
         .sizes-wrapper input[type="radio"] { display: none; }
-        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 8px; cursor: pointer; font-size: 0.9em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; }
+        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 20px; cursor: pointer; font-size: 0.9em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; }
         .sizes-wrapper input[type="radio"]:checked + label { background-color: var(--brand-yellow); color: var(--dark-bg); }
-
-        .btn-order { display: block; background-color: transparent; color: var(--brand-yellow); border: 2px solid var(--brand-yellow); padding: 12px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
+        
+        .btn-order { display: block; background-color: transparent; color: var(--brand-yellow); border: 2px solid var(--brand-yellow); padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
         .btn-order:hover { background-color: var(--brand-yellow); color: var(--dark-bg); }
 
         /* قسم آراء العملاء */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .review-card { background-color: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid #333; text-align: right; }
-        .review-stars { color: var(--brand-yellow); font-size: 1.2em; margin-bottom: 10px; }
-        .review-text { font-size: 1.1em; color: var(--text-gray); line-height: 1.6; margin-bottom: 15px; font-style: italic; }
-        .review-name { font-weight: 700; color: var(--text-light); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .review-card { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #333; text-align: right; }
+        .review-stars { color: var(--brand-yellow); font-size: 1.5em; margin-bottom: 15px; }
+        .review-text { font-size: 1.1em; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+        .review-name { font-weight: 700; color: var(--text-light); font-size: 1.2em; }
 
         /* قسم الأسئلة الشائعة (FAQ) */
         .faq-container { max-width: 800px; margin: 0 auto; text-align: right; }
@@ -102,13 +90,12 @@
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after { content: '+'; color: var(--brand-yellow); font-size: 1.5em; }
         .faq-item[open] summary::after { content: '-'; }
-        .faq-item p { padding: 0 20px 20px; color: var(--text-gray); font-size: 1em; line-height: 1.6; border-top: 1px solid #222; margin-top: 10px; padding-top: 15px; }
+        .faq-item p { padding: 0 20px 20px; color: var(--text-gray); font-size: 1.1em; line-height: 1.6; border-top: 1px solid #222; margin-top: 10px; padding-top: 15px; }
 
-        /* الفوتر */
-        footer { background-color: var(--card-bg); color: var(--text-light); text-align: center; padding: 40px 20px; border-top: 3px solid var(--brand-yellow); }
-
-        /* تنبيه السلة */
-        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-yellow); color: var(--dark-bg); font-weight: bold; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
+        footer { background-color: var(--card-bg); color: var(--text-gray); text-align: center; padding: 40px 20px; border-top: 2px solid var(--brand-yellow); }
+        
+        /* إشعار إضافة المنتج للسلة */
+        .toast { visibility: hidden; min-width: 250px; background-color: #4CAF50; color: white; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
@@ -135,32 +122,23 @@
     <div class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>نقاء وتفرد في كل قطرة</h1>
-            <p>اكتشف مجموعتنا الفاخرة من العطور والمسكات المصممة لتعكس شخصيتك</p>
-            <a href="#categories" class="btn-main">تسوّق الآن</a>
+            <h1>نقاء الطبيعة في كل قطرة</h1>
+            <p>اكتشف مجموعتنا الفاخرة المصممة لتعكس شخصيتك</p>
+            <a href="#products" class="btn-main">تسوّق الآن</a>
         </div>
     </div>
 
-    <div class="section-wrapper" id="categories">
+    <div class="section-wrapper">
         <h2 class="section-title">تسوق حسب الفئة</h2>
         <div class="categories-grid">
-            <a href="perfumes.html" class="category-card">
-                <img src="" alt="العطور" class="category-img" style="background-color: #222;">
-                <div class="category-title">العطور</div>
-            </a>
-            <a href="musks.html" class="category-card">
-                <img src="" alt="المسكات" class="category-img" style="background-color: #333;">
-                <div class="category-title">المسكات</div>
-            </a>
-            <a href="offers.html" class="category-card">
-                <img src="" alt="الباقات" class="category-img" style="background-color: #444;">
-                <div class="category-title">الباقات والعروض</div>
-            </a>
+            <a href="perfumes.html" class="category-card">العطور</a>
+            <a href="musks.html" class="category-card">المسكات</a>
+            <a href="offers.html" class="category-card">الباقات</a>
         </div>
     </div>
 
     <div class="section-wrapper" id="products">
-        <h2 class="section-title">إصداراتنا المميزة</h2>
+        <h2 class="section-title">جميع المنتجات</h2>
         <div class="products-grid">
             
             <div class="product-card" onclick="window.location.href='product1.html';">
@@ -179,7 +157,6 @@
                     <input type="radio" name="size-p1" id="p1-110" value="110 مل" data-price="900" onchange="updatePrice('p1', this)">
                     <label for="p1-110">110 مل</label>
                 </div>
-
                 <button class="btn-order" onclick="event.stopPropagation(); addToCart('p1');">أضف إلى السلة 🛒</button>
             </div>
 
@@ -199,7 +176,6 @@
                     <input type="radio" name="size-p2" id="p2-110" value="110 مل" data-price="800" onchange="updatePrice('p2', this)">
                     <label for="p2-110">110 مل</label>
                 </div>
-
                 <button class="btn-order" onclick="event.stopPropagation(); addToCart('p2');">أضف إلى السلة 🛒</button>
             </div>
 
@@ -211,18 +187,13 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="review-stars">★★★★★</div>
-                <p class="review-text">"عطور ممتازة وثباتها خرافي، تجربة شراء رائعة وسرعة في التوصيل. أنصح بشدة بعطر النخبة."</p>
+                <p class="review-text">"عبوات فاخرة جداً وثبات العطر خرافي، تجربة شراء رائعة وسرعة في التوصيل."</p>
                 <div class="review-name">- أحمد محمود</div>
             </div>
             <div class="review-card">
                 <div class="review-stars">★★★★★</div>
-                <p class="review-text">"الباكجنج فخم جداً ينفع هدايا، ومسك الطهارة ريحته هادية وثابتة جداً، شكراً أخِلَّاء."</p>
+                <p class="review-text">"مسك الطهارة ريحته هادية وثابتة جداً، أنصح به بشدة لكل عروسة."</p>
                 <div class="review-name">- سارة خالد</div>
-            </div>
-            <div class="review-card">
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">"الأسعار مقابل الجودة ممتازة جداً. العطور فعلاً محاكاة دقيقة جداً لأغلى الماركات العالمية."</p>
-                <div class="review-name">- مصطفى كمال</div>
             </div>
         </div>
     </div>
@@ -236,19 +207,19 @@
             </details>
             <details class="faq-item">
                 <summary>هل تعتيق العطور ضروري؟</summary>
-                <p>جميع العطور لدينا معتقة ومجهزة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى فترة تعتيق إضافية للحصول على أفضل أداء.</p>
+                <p>جميع العطور لدينا معتقة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى التعتيق.</p>
             </details>
             <details class="faq-item">
                 <summary>هل ثبات وفوحان كل العطور متساوي؟</summary>
-                <p>يختلف الثبات والفوحان من عطر لآخر باختلاف النوتات العطرية، ويتم توضيح ذلك بشكل دقيق في وصف كل منتج.</p>
+                <p>يختلف الثبات والفوحان من عطر لآخر ويتم توضيح ذلك بشكل دقيق في وصف كل منتج.</p>
             </details>
             <details class="faq-item">
                 <summary>ما مدة الشحن؟</summary>
-                <p>مدة الشحن تختلف حسب المحافظة ولكن في المتوسط تتراوح بين 3 إلى 5 أيام عمل.</p>
+                <p>مدة الشحن تختلف حسب الموقع ولكن في المتوسط تتراوح بين 3 إلى 5 أيام.</p>
             </details>
             <details class="faq-item">
                 <summary>كيف تقيس ثبات وفوحان العطر بشكل صحيح؟</summary>
-                <p>للحصول على تقييم دقيق يُفضل استخدام العطر بالطريقة التالية:<br>١- استخدام 8 إلى 12 رشة (توزيع كامل للعطر).<br>٢- التجربة في مكان مغلق وليس مفتوح في الهواء الطلق.<br>٣- أن يكون الجسم نظيفاً ومرطباً جيداً.<br>٤- عدم استخدام أي عطر آخر قبل التجربة لعدم تداخل الروائح.</p>
+                <p>للحصول على تقييم دقيق يُفضل استخدام العطر بالطريقة التالية:<br>١- استخدام 8 إلى 12 رشة (تطبيق كامل للعبوة).<br>٢- التجربة في مكان مغلق وليس مفتوح.<br>٣- أن يكون الجسم نظيفاً ومرطباً جيداً.<br>٤- عدم استخدام أي عطر آخر قبل التجربة.</p>
             </details>
         </div>
     </div>
@@ -260,10 +231,9 @@
         <p>جميع الحقوق محفوظة © 2026</p>
     </footer>
 
-    <div id="toast" class="toast">تم إضافة المنتج إلى السلة بنجاح! 🛒</div>
+    <div id="toast" class="toast">تم إضافة العبوة إلى السلة بنجاح!</div>
 
     <script>
-        // تغيير السعر حسب الحجم
         function updatePrice(productId, radioInput) {
             const priceDisplay = document.getElementById('price-' + productId);
             const newPrice = radioInput.getAttribute('data-price');
@@ -272,7 +242,6 @@
             priceDisplay.setAttribute('data-price', newPrice);
         }
 
-        // الإضافة للسلة (LocalStorage)
         function addToCart(productId) {
             const name = document.getElementById('name-' + productId).innerText;
             const sizeInput = document.querySelector('input[name="size-' + productId + '"]:checked');
