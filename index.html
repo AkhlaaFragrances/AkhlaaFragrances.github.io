@@ -7,19 +7,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* هوية صارمة: أصفر وأسود فقط */
+        /* هوية البراند: تدرج أصفر مريح للعين (ذهب مطفي) مع أسود عميق */
         :root {
-            --brand-yellow: #e6c328;
-            --bg-black: #050505;
-            --card-black: #111111;
+            --brand-yellow: #dca311;       /* أصفر ذهبي عميق */
+            --brand-light: #e8c45d;        /* أصفر فاتح للتدرج عشان راحة العين */
+            --bg-black: #080808;           /* أسود عميق للفوتر والهيدر */
+            --card-black: #121212;         /* أسود للكروت */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-black); color: var(--brand-yellow); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        
+        /* الخلفية الأساسية للموقع أصفر متدرج لراحة العين */
+        body { 
+            background: radial-gradient(circle at top, var(--brand-light) 0%, var(--brand-yellow) 100%); 
+            color: var(--bg-black); 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
 
-        /* القائمة العلوية */
-        header { background-color: var(--card-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--brand-yellow); position: sticky; top: 0; z-index: 100; }
+        /* القائمة العلوية (أسود) */
+        header { background-color: var(--bg-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--brand-yellow); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
         nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; }
@@ -30,10 +39,10 @@
         @media (min-width: 768px) { nav ul { margin-top: 0; gap: 20px; } }
 
         /* الواجهة (Hero) */
-        .hero { position: relative; height: 70vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--bg-black); border-bottom: 2px solid var(--brand-yellow); }
+        .hero { position: relative; height: 70vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; border-bottom: 3px solid var(--bg-black); }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 1)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
+            background: linear-gradient(to bottom, rgba(220, 163, 17, 0.7), rgba(220, 163, 17, 0.9)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
             animation: zoomIn 20s infinite alternate ease-in-out;
             z-index: 1;
         }
@@ -41,27 +50,27 @@
         .hero-content { position: relative; z-index: 2; padding: 20px; animation: fadeIn 1.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .hero h1 { font-size: 3.5em; color: var(--brand-yellow); margin-bottom: 15px; font-weight: 900; text-shadow: 0 4px 10px rgba(230, 195, 40, 0.2); }
-        .hero p { font-size: 1.4em; color: var(--brand-yellow); font-weight: 400; margin-bottom: 35px; opacity: 0.9; }
-        .btn-main { background-color: var(--brand-yellow); color: var(--bg-black); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 900; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--brand-yellow); }
-        .btn-main:hover { background-color: var(--bg-black); color: var(--brand-yellow); }
+        .hero h1 { font-size: 4em; color: var(--bg-black); margin-bottom: 15px; font-weight: 900; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .hero p { font-size: 1.5em; color: var(--bg-black); font-weight: 700; margin-bottom: 35px; }
+        .btn-main { background-color: var(--bg-black); color: var(--brand-yellow); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 900; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--bg-black); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn-main:hover { background-color: transparent; color: var(--bg-black); }
 
         /* الأقسام */
         .section-wrapper { padding: 80px 5%; text-align: center; }
-        .section-title { font-size: 2.5em; margin-bottom: 50px; color: var(--brand-yellow); position: relative; display: inline-block; font-weight: 900; }
-        .section-title::after { content: ""; width: 40%; height: 4px; background-color: var(--brand-yellow); position: absolute; bottom: -15px; right: 30%; border-radius: 2px; }
+        .section-title { font-size: 2.5em; margin-bottom: 50px; color: var(--bg-black); position: relative; display: inline-block; font-weight: 900; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .section-title::after { content: ""; width: 40%; height: 4px; background-color: var(--bg-black); position: absolute; bottom: -15px; right: 30%; border-radius: 2px; }
 
-        /* الفئات */
+        /* الفئات (أسود عشان يكسر الأصفر) */
         .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-        .category-card { background-color: var(--card-black); height: 160px; border-radius: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--brand-yellow); font-size: 1.8em; font-weight: 900; transition: all 0.4s ease; border: 1px solid var(--brand-yellow); }
-        .category-card:hover { background-color: var(--brand-yellow); color: var(--bg-black); transform: translateY(-8px); box-shadow: 0 10px 20px rgba(230, 195, 40, 0.2); }
+        .category-card { background-color: var(--card-black); height: 160px; border-radius: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--brand-yellow); font-size: 1.8em; font-weight: 900; transition: all 0.4s ease; border: 2px solid var(--brand-yellow); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .category-card:hover { background-color: var(--brand-yellow); color: var(--bg-black); border-color: var(--bg-black); transform: translateY(-8px); }
 
-        /* المنتجات */
+        /* المنتجات (كروت سوداء بتفاصيل صفراء) */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; justify-items: center; }
-        .product-card { background-color: var(--card-black); border: 1px solid var(--brand-yellow); border-radius: 15px; padding: 25px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(230, 195, 40, 0.3); border-width: 2px; }
+        .product-card { background-color: var(--card-black); border: 2px solid var(--brand-yellow); border-radius: 15px; padding: 25px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
         .product-image-container { display: block; margin-bottom: 20px; overflow: hidden; border-radius: 10px; border: 1px solid var(--brand-yellow); }
-        .product-image { width: 100%; height: 260px; object-fit: cover; transition: transform 0.5s ease; opacity: 0.8; }
+        .product-image { width: 100%; height: 260px; object-fit: cover; transition: transform 0.5s ease; opacity: 0.85; }
         .product-card:hover .product-image { transform: scale(1.05); opacity: 1; }
         
         .product-name { color: var(--brand-yellow); font-size: 1.6em; margin: 0 0 10px 0; font-weight: 900; }
@@ -78,22 +87,22 @@
 
         /* آراء العملاء */
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .review-card { background-color: var(--card-black); padding: 35px; border-radius: 15px; border: 1px solid var(--brand-yellow); text-align: right; }
+        .review-card { background-color: var(--card-black); padding: 35px; border-radius: 15px; border: 1px solid var(--brand-yellow); text-align: right; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .review-stars { color: var(--brand-yellow); font-size: 1.5em; margin-bottom: 15px; }
         .review-text { font-size: 1.1em; color: var(--brand-yellow); line-height: 1.8; margin-bottom: 20px; font-style: italic; font-weight: 400; opacity: 0.9; }
         .review-name { font-weight: 900; color: var(--brand-yellow); font-size: 1.2em; }
 
         /* الأسئلة الشائعة */
         .faq-container { max-width: 800px; margin: 0 auto; text-align: right; }
-        .faq-item { background-color: var(--card-black); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--brand-yellow); overflow: hidden; }
+        .faq-item { background-color: var(--card-black); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--brand-yellow); overflow: hidden; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
         .faq-item summary { padding: 20px; font-size: 1.2em; font-weight: 900; color: var(--brand-yellow); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none; }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after { content: '+'; color: var(--brand-yellow); font-size: 1.5em; }
         .faq-item[open] summary::after { content: '-'; }
         .faq-item p { padding: 0 20px 20px; color: var(--brand-yellow); font-size: 1.1em; line-height: 1.7; border-top: 1px solid var(--brand-yellow); margin-top: 10px; padding-top: 15px; font-weight: 400; opacity: 0.9; }
 
-        /* الفوتر الاحترافي */
-        .site-footer { background-color: var(--card-black); color: var(--brand-yellow); padding: 60px 5% 20px; border-top: 2px solid var(--brand-yellow); text-align: right; }
+        /* الفوتر الاحترافي (أسود عميق) */
+        .site-footer { background-color: var(--bg-black); color: var(--brand-yellow); padding: 60px 5% 20px; border-top: 5px solid var(--bg-black); text-align: right; box-shadow: 0 -5px 20px rgba(0,0,0,0.5); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
         
         .footer-col h3 { color: var(--brand-yellow); font-size: 1.8em; margin-bottom: 20px; font-weight: 900; }
@@ -102,11 +111,13 @@
         .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); font-weight: 400; opacity: 0.9; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-size: 1em; font-weight: 700; }
-        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-size: 1em; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; opacity: 1; }
         
         .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--brand-yellow); font-size: 1em; font-weight: 700; }
         .footer-contact i { color: var(--brand-yellow); font-size: 1.2em; }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; transition: 0.3s; }
+        .footer-contact a:hover { font-weight: 900; }
         
         .footer-social { display: flex; gap: 15px; margin-top: 20px; }
         .footer-social a { color: var(--brand-yellow); font-size: 1.8em; transition: transform 0.3s; }
@@ -116,8 +127,7 @@
         .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; color: var(--brand-yellow); font-weight: 700; opacity: 0.8; }
         .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
 
-        /* التنبيه */
-        .toast { visibility: hidden; min-width: 250px; background-color: var(--card-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 15px rgba(230, 195, 40, 0.2); border: 1px solid var(--brand-yellow); }
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--card-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid var(--brand-yellow); }
         .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
     </style>
 </head>
@@ -209,7 +219,7 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="review-stars">★★★★★</div>
-                <p class="review-text">"العبوات فاخرة جداً وتصميمها مريح للعين، ثبات النوتات العطرية خرافي وتجربة الشراء ممتازة."</p>
+                <p class="review-text">"العبوات فاخرة جداً، ثبات النوتات العطرية خرافي وتجربة الشراء ممتازة."</p>
                 <div class="review-name">- أحمد محمود</div>
             </div>
             <div class="review-card">
@@ -224,7 +234,7 @@
         <h2 class="section-title">الأسئلة الشائعة (FAQ)</h2>
         <div class="faq-container">
             <details class="faq-item">
-                <summary>ما نوع الكحول المستخدم في تحضير منتجاتنا؟</summary>
+                <summary>ما نوع الكحول المستخدم في تحضير العبوات؟</summary>
                 <p>نستخدم كحول طبي (إيثانول) آمن تماماً للاستخدام.</p>
             </details>
             <details class="faq-item">
@@ -233,11 +243,7 @@
             </details>
             <details class="faq-item">
                 <summary>هل ثبات وفوحان كل العطور متساوي؟</summary>
-                <p>يختلف الثبات والفوحان من عطر لآخر بناءً على نوتات الهرم العطري لكل تركيبة، ويتم توضيح ذلك بدقة في الوصف.</p>
-            </details>
-            <details class="faq-item">
-                <summary>كيف تقيس ثبات وفوحان العطر بشكل صحيح؟</summary>
-                <p>للحصول على تقييم دقيق يُفضل الاستخدام كالتالي:<br>١- استخدام 8 إلى 12 رشة من العبوة.<br>٢- التجربة في مكان مغلق.<br>٣- أن يكون الجسم نظيفاً ومرطباً.<br>٤- عدم خلطه بعطر آخر.</p>
+                <p>يختلف الثبات والفوحان من تركيبة لأخرى بناءً على نوتات الهرم العطري، ويتم توضيح ذلك بدقة في الوصف.</p>
             </details>
         </div>
     </div>
@@ -267,20 +273,21 @@
             <div class="footer-col">
                 <h4>تواصل معنا</h4>
                 <ul class="footer-links footer-contact">
-                    <li><i class="fa-solid fa-phone"></i> +201212946789</li>
-                    <li><i class="fa-solid fa-envelope"></i> contact@akhlaa.com</li>
+                    <!-- تحويل الرقم للواتساب مباشرة -->
+                    <li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li>
+                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@akhlaa.com">contact@akhlaa.com</a></li>
                 </ul>
                 <div class="footer-social">
+                    <!-- أيقونات الفيس والواتس مفعلة -->
                     <a href="https://wa.me/201212946789" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" target="_blank" aria-label="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" target="_blank" aria-label="انستجرام"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" aria-label="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
         </div>
         <hr class="footer-divider">
         <div class="footer-bottom">
             <p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p>
-            <p>تصميم وتطوير بواسطة <a href="#">محمد بن رضا</a></p>
+            <p>تصميم وتطوير بواسطة <a href="#">Ch.M.M</a></p>
         </div>
     </footer>
 
