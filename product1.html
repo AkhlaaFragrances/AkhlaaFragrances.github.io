@@ -12,7 +12,6 @@
         nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
         nav ul li a:hover { color: #e6c328; }
 
-        /* تنسيق صفحة تفاصيل المنتج */
         .product-details-container {
             max-width: 1100px;
             margin: 60px auto;
@@ -26,92 +25,55 @@
             border: 1px solid #eeeeee;
         }
 
-        /* الجزء الأيمن: صورة العطر */
-        .product-image-side {
-            flex: 1;
-            min-width: 300px;
-        }
+        .product-image-side { flex: 1; min-width: 300px; }
         .product-image-side img {
             width: 100%;
             height: 500px;
             object-fit: cover;
             border-radius: 8px;
-            background-color: #f5f5f5; /* لون مؤقت لحين وضع صورتك */
+            background-color: #f5f5f5;
             border: 1px solid #eaeaea;
         }
 
-        /* الجزء الأيسر: تفاصيل العطر والأحجام */
-        .product-info-side {
-            flex: 1.2;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .product-category {
-            color: #b89b1c;
-            font-weight: 700;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
-        .product-title {
-            font-size: 2.8em;
-            color: #111111;
-            margin-bottom: 15px;
-            margin-top: 0;
-        }
-        .product-desc {
-            color: #555555;
-            font-size: 1.15em;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
+        .product-info-side { flex: 1.2; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
+        .product-category { color: #b89b1c; font-weight: 700; font-size: 1.1em; margin-bottom: 10px; }
+        .product-title { font-size: 2.8em; color: #111111; margin-bottom: 15px; margin-top: 0; }
+        
+        /* السعر الكبير في صفحة التفاصيل */
+        .product-price-large { color: #b89b1c; font-size: 2.2em; font-weight: 700; margin-bottom: 25px; }
+        
+        .product-desc { color: #555555; font-size: 1.15em; line-height: 1.8; margin-bottom: 30px; }
 
-        /* تنسيق اختيار الأحجام */
-        .sizes-title {
-            font-size: 1.2em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #111111;
-        }
-        .sizes-options {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        .size-radio {
-            display: none; /* إخفاء زر الراديو الدائري التقليدي */
-        }
-        .size-label {
-            border: 2px solid #dddddd;
-            padding: 12px 30px;
-            border-radius: 6px;
+        .sizes-title { font-size: 1.2em; font-weight: 700; margin-bottom: 15px; color: #111111; }
+        
+        /* أزرار الأحجام لصفحة التفاصيل */
+        .sizes-options { display: flex; gap: 15px; margin-bottom: 40px; }
+        .sizes-options input[type="radio"] { display: none; }
+        .sizes-options label {
+            padding: 10px 25px;
+            border: 2px solid #e6c328;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 700;
             font-size: 1.1em;
+            color: #b89b1c;
             transition: all 0.3s ease;
-            color: #444444;
         }
-        .size-label:hover {
-            border-color: #e6c328;
-        }
-        /* شكل الحجم عند اختياره (أسود وذهبي) */
-        .size-radio:checked + .size-label {
-            background-color: #111111;
-            border-color: #111111;
-            color: #e6c328;
+        .sizes-options label:hover { background-color: #fffcf0; }
+        .sizes-options input[type="radio"]:checked + label {
+            background-color: #e6c328;
+            color: #ffffff;
         }
 
-        /* زر الشراء */
         .btn-buy {
-            background-color: #e6c328;
-            color: #000000;
+            background-color: #111111;
+            color: #e6c328;
             border: none;
             padding: 18px;
             font-size: 1.3em;
             font-family: 'Tajawal', sans-serif;
             font-weight: 700;
-            border-radius: 6px;
+            border-radius: 25px;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -120,12 +82,9 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .btn-buy:hover {
-            background-color: #111111;
-            color: #e6c328;
-        }
+        .btn-buy:hover { background-color: #e6c328; color: #111111; }
 
-        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 3px solid #e6c328; }
+        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
     </style>
 </head>
 <body>
@@ -144,32 +103,34 @@
     </header>
 
     <div class="product-details-container">
+        
         <div class="product-image-side">
             <img src="" alt="صورة العطر">
         </div>
 
         <div class="product-info-side">
-            <span class="product-category">عطور للجنسين</span>
+            <span class="product-category">عطور مميزة</span>
             <h1 class="product-title">عطر النخبة الفاخر</h1>
+            
+            <div class="product-price-large" id="detail-price">500 ج.م</div>
+            
             <p class="product-desc">
-                محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية. يبدأ العطر بنفحات من البرغموت المنعش، وينتهي بقاعدة دافئة من الأخشاب والباتشولي، ليمنحك ثباتاً يدوم طوال اليوم وفوحاناً يلفت الأنظار في كل مكان.
+                محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية. يبدأ العطر بنفحات منعشة، وينتهي بقاعدة دافئة تمنحك ثباتاً يدوم طوال اليوم وفوحاناً يلفت الأنظار في كل مكان.
             </p>
 
             <div class="sizes-title">اختر حجم العبوة:</div>
             <div class="sizes-options">
-                <input type="radio" name="perfume-size" id="size-35" class="size-radio">
-                <label for="size-35" class="size-label">35 مل</label>
+                <input type="radio" name="perfume-size" id="size-35" value="35 مل" onchange="document.getElementById('detail-price').innerText='350 ج.م'">
+                <label for="size-35">35 مل</label>
 
-                <input type="radio" name="perfume-size" id="size-55" class="size-radio" checked>
-                <label for="size-55" class="size-label">55 مل</label>
+                <input type="radio" name="perfume-size" id="size-55" value="55 مل" checked onchange="document.getElementById('detail-price').innerText='500 ج.م'">
+                <label for="size-55">55 مل</label>
 
-                <input type="radio" name="perfume-size" id="size-110" class="size-radio">
-                <label for="size-110" class="size-label">110 مل</label>
+                <input type="radio" name="perfume-size" id="size-110" value="110 مل" onchange="document.getElementById('detail-price').innerText='900 ج.م'">
+                <label for="size-110">110 مل</label>
             </div>
 
-            <a href="https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) لقد رأيته على الموقع." class="btn-buy" target="_blank">
-                🛒 شراء الآن عبر واتساب
-            </a>
+            <button class="btn-buy" onclick="let size = document.querySelector('input[name=\'perfume-size\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 شراء الآن عبر واتساب</button>
         </div>
     </div>
 
