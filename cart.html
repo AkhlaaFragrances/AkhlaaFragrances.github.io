@@ -4,209 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخِلَّاء للعطور | سلة المشتريات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --brand-yellow: #e6c328;
-            --dark-accent: #111111;
-            --text-dark: #222222;
-            --card-bg: #1a1a1a;
-        }
-
+        :root { --brand-yellow: #e6c328; --brand-black: #111111; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--brand-yellow); color: var(--text-dark); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--brand-yellow); color: var(--brand-black); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
         
-        header { background-color: var(--dark-accent); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 3px solid #ffffff; position: sticky; top: 0; z-index: 100; }
-        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
-        nav ul li a { text-decoration: none; color: #ffffff; font-weight: 700; font-size: 15px; transition: color 0.3s ease; }
-        nav ul li a:hover { color: var(--brand-yellow); }
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; padding: 5px 10px; }
+        nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
         .cart-icon { position: relative; font-size: 1.2em; color: var(--brand-yellow) !important; }
-        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: #d32f2f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7em; font-weight: bold; }
-
-        @media (min-width: 768px) { nav ul { margin-top: 0; gap: 25px; } }
+        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
 
         .cart-container { max-width: 1000px; margin: 60px auto; padding: 20px; display: grid; grid-template-columns: 1fr; gap: 40px; }
-        @media (min-width: 768px) { .cart-container { grid-template-columns: 1.5fr 1fr; } }
+        @media (min-width: 768px) { .cart-container { grid-template-columns: 1.4fr 1fr; } }
         
-        .section-title { font-size: 2em; margin-bottom: 30px; color: var(--dark-accent); font-weight: 700; border-bottom: 3px solid var(--dark-accent); display: inline-block; padding-bottom: 10px;}
+        .section-title { font-size: 2em; margin-bottom: 30px; color: var(--brand-black); font-weight: 900; border-bottom: 3px solid var(--brand-black); display: inline-block; padding-bottom: 10px; }
 
-        /* قسم المنتجات المختارة */
-        .cart-items-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 2px solid var(--dark-accent); box-shadow: 0 5px 15px rgba(0,0,0,0.2); color: #ffffff; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333; }
+        /* قائمة المنتجات المحفوظة بالسلة */
+        .cart-items-section { background-color: var(--brand-black); padding: 30px; border-radius: 12px; color: var(--brand-yellow); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(230, 195, 40, 0.2); }
         .cart-item:last-child { border-bottom: none; }
-        .item-info h4 { color: var(--brand-yellow); font-size: 1.3em; margin-bottom: 5px; }
-        .item-info p { color: #aaa; font-size: 0.9em; }
-        .item-price { font-size: 1.2em; font-weight: bold; }
-        .btn-remove { background: #d32f2f; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-family: 'Tajawal'; font-size: 0.9em; margin-right: 15px;}
-        .empty-message { text-align: center; color: #aaa; font-size: 1.2em; padding: 30px 0; }
+        .item-info h4 { color: var(--brand-yellow); font-size: 1.3em; margin-bottom: 5px; font-weight: 900; }
+        .item-info p { opacity: 0.8; font-size: 0.95em; }
+        .item-price { font-size: 1.2em; font-weight: bold; margin-left: 15px; }
+        .btn-remove { background: #d32f2f; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-family: 'Tajawal'; font-weight: bold; }
+        .empty-message { text-align: center; font-size: 1.2em; padding: 30px 0; }
 
-        /* قسم إتمام الطلب */
-        .checkout-section { background-color: #ffffff; padding: 30px; border-radius: 12px; border: 2px solid var(--dark-accent); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5em; font-weight: bold; color: var(--dark-accent); margin-bottom: 30px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; }
+        /* نموذج إدخال البيانات والدفع */
+        .checkout-section { background-color: var(--brand-black); color: var(--brand-yellow); padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.6em; font-weight: 900; margin-bottom: 30px; border-bottom: 2px dashed rgba(230, 195, 40, 0.4); padding-bottom: 15px; }
         
         .form-group { margin-bottom: 20px; text-align: right; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Tajawal'; font-size: 1em; }
-        .form-group input:focus { outline: none; border-color: var(--brand-yellow); }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; opacity: 0.9; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid var(--brand-yellow); background-color: #1a1a1a; color: #fff; border-radius: 8px; font-family: 'Tajawal'; font-size: 1em; }
+        .form-group input:focus { outline: none; background-color: #222; }
 
-        .btn-checkout { background-color: var(--dark-accent); color: var(--brand-yellow); border: none; padding: 18px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.3em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; margin-top: 10px;}
-        .btn-checkout:hover { background-color: var(--brand-yellow); color: var(--dark-accent); border: 2px solid var(--dark-accent); }
+        .pay-methods { margin-top: 20px; padding: 15px; background-color: #1a1a1a; border-radius: 8px; border: 1px solid rgba(230, 195, 40, 0.2); }
+        .pay-option { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer; font-weight: 700; }
+        .pay-option input { width: auto; accent-color: var(--brand-yellow); }
+        .pay-note { font-size: 0.85em; opacity: 0.7; margin-top: 10px; line-height: 1.5; }
 
-        footer { background-color: var(--dark-accent); color: #ffffff; text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 3px solid var(--brand-yellow); }
+        .btn-checkout { background-color: var(--brand-yellow); color: var(--brand-black); border: none; padding: 18px; border-radius: 30px; font-weight: 900; font-size: 1.3em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; margin-top: 25px; }
+        .btn-checkout:hover { background-color: #ffffff; }
+
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
+        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); opacity: 0.9; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
+        .footer-contact i { color: var(--brand-yellow); }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; }
+        .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-weight: 700; opacity: 0.8; }
+        .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <a href="index.html">أخِلَّاء للعطور</a>
-        </div>
+        <div class="logo"><a href="index.html">أخِلَّاء للعطور</a></div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="perfumes.html">المجموعات العطرية</a></li>
                 <li><a href="offers.html">الباقات والعروض</a></li>
                 <li><a href="musks.html">المسكات</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
                 <li><a href="cart.html" class="cart-icon">🛒 السلة <span class="cart-badge" id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
 
     <div class="cart-container">
-        
-        <!-- المنتجات -->
         <div class="cart-items-section">
             <h2 class="section-title" style="color: var(--brand-yellow); border-color: var(--brand-yellow);">محتويات السلة</h2>
-            <div id="cart-items-container">
-                <!-- سيتم إدراج المنتجات هنا بواسطة الجافاسكريبت -->
-            </div>
+            <div id="cart-items-container"></div>
         </div>
 
-        <!-- الشحن والدفع -->
         <div class="checkout-section">
-            <h2 class="section-title">إتمام الطلب</h2>
-            
-            <div class="total-row">
-                <span>الإجمالي:</span>
-                <span id="cart-total">0 ج.م</span>
+            <h2 class="section-title" style="color: var(--brand-yellow); border-color: var(--brand-yellow);">إتمام الطلب</h2>
+            <div class="total-row"><span>الإجمالي الكلي:</span><span id="cart-total">0 ج.م</span></div>
+
+            <div class="form-group"><label>الاسم بالكامل</label><input type="text" id="cust-name" placeholder="أدخل اسمك الثلاثي" required></div>
+            <div class="form-group"><label>العنوان بالتفصيل</label><input type="text" id="cust-address" placeholder="المحافظة، المدينة، اسم الشارع" required></div>
+            <div class="form-group"><label>رقم الهاتف</label><input type="tel" id="cust-phone" placeholder="01xxxxxxxxx" required></div>
+
+            <div class="pay-methods">
+                <h3 style="font-size: 1.1em; margin-bottom: 12px;"><i class="fa-solid fa-wallet"></i> خيارات الدفع الإلكتروني المتاحة</h3>
+                <label class="pay-option"><input type="radio" name="payment" value="محفظة إلكترونية (فودافون كاش)" checked> <span>فودافون كاش</span></label>
+                <label class="pay-option"><input type="radio" name="payment" value="تطبيق InstaPay"> <span>إنستا باي (InstaPay)</span></label>
+                <p class="pay-note">سيتم تزويدك ببيانات تحويل الحساب فور إرسال الفاتورة عبر المحادثة مباشرة.</p>
             </div>
 
-            <div class="form-group">
-                <label>الاسم بالكامل</label>
-                <input type="text" id="cust-name" placeholder="أدخل اسمك" required>
-            </div>
-            <div class="form-group">
-                <label>العنوان بالتفصيل</label>
-                <input type="text" id="cust-address" placeholder="المحافظة، المدينة، الشارع، رقم العمارة" required>
-            </div>
-            <div class="form-group">
-                <label>رقم الهاتف (للتواصل)</label>
-                <input type="tel" id="cust-phone" placeholder="01xxxxxxxxx" required>
-            </div>
-
-            <button class="btn-checkout" onclick="sendOrderToWhatsApp()">إرسال الطلب عبر واتساب 📲</button>
+            <button class="btn-checkout" onclick="sendOrderToWhatsApp()">تأكيد وإرسال الفاتورة عبر واتساب 📲</button>
         </div>
-
     </div>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 15px;">
-            <a href="index.html" style="color: var(--brand-yellow); font-size: 26px; font-weight: bold; text-decoration: none;">أخِلَّاء للعطور</a>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col"><h3>أخِلَّاء للعطور</h3><p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p></div>
+            <div class="footer-col"><h4>روابط سريعة</h4><ul class="footer-links"><li><a href="index.html">الرئيسية</a></li><li><a href="perfumes.html">جميع المنتجات</a></li><li><a href="offers.html">العروض والباقات</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+            <div class="footer-col"><h4>الفئات</h4><ul class="footer-links"><li><a href="perfumes.html">العطور</a></li><li><a href="musks.html">المسكات</a></li></ul></div>
+            <div class="footer-col"><h4>تواصل معنا</h4><ul class="footer-links footer-contact"><li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li><li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li></ul><div class="footer-social"><a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a></div></div>
         </div>
-        <p>جميع الحقوق محفوظة © 2026</p>
+        <hr class="footer-divider"><div class="footer-bottom"><p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p><p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p></div>
     </footer>
 
     <script>
-        // دالة جلب وعرض المنتجات
         function loadCart() {
             const container = document.getElementById('cart-items-container');
             const cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             let total = 0;
-            
             document.getElementById('cart-count').innerText = cart.length;
             container.innerHTML = '';
-
             if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-message">سلة المشتريات فارغة حالياً. <br><br> <a href="index.html" style="color: var(--brand-yellow);">تسوق الآن</a></div>';
+                container.innerHTML = '<div class="empty-message">السلة فارغة حالياً.<br><br><a href="index.html" style="color: var(--brand-yellow); text-decoration: none; font-weight: bold;">اضغط هنا للتسوق</a></div>';
                 document.getElementById('cart-total').innerText = '0 ج.م';
                 return;
             }
-
             cart.forEach((item, index) => {
                 total += item.price;
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'cart-item';
-                itemDiv.innerHTML = `
-                    <div class="item-info">
-                        <h4>${item.name}</h4>
-                        <p>الحجم: ${item.size}</p>
-                    </div>
-                    <div>
-                        <span class="item-price">${item.price} ج.م</span>
-                        <button class="btn-remove" onclick="removeItem(${index})">حذف ✖</button>
-                    </div>
-                `;
-                container.appendChild(itemDiv);
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `<div class="item-info"><h4>${item.name}</h4><p>الحجم/النوع: ${item.size}</p></div><div><span class="item-price">${item.price} ج.م</span><button class="btn-remove" onclick="removeItem(${index})">حذف ✖</button></div>`;
+                container.appendChild(div);
             });
-
             document.getElementById('cart-total').innerText = total + ' ج.م';
         }
-
-        // دالة حذف منتج
         function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('akhlaaCart', JSON.stringify(cart));
             loadCart();
         }
-
-        // دالة إرسال الطلب للواتساب
         function sendOrderToWhatsApp() {
             const cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
-            if (cart.length === 0) {
-                alert("السلة فارغة! قم بإضافة منتجات أولاً.");
-                return;
-            }
-
-            const name = document.getElementById('cust-name').value;
-            const address = document.getElementById('cust-address').value;
-            const phone = document.getElementById('cust-phone').value;
-
-            if (!name || !address || !phone) {
-                alert("يرجى إكمال جميع بيانات الشحن (الاسم، العنوان، رقم الهاتف).");
-                return;
-            }
-
-            let orderText = "🌟 *طلب جديد من متجر أخِلَّاء للعطور* 🌟\n\n";
-            orderText += "👤 *بيانات العميل:*\n";
-            orderText += "الاسم: " + name + "\n";
-            orderText += "العنوان: " + address + "\n";
-            orderText += "الهاتف: " + phone + "\n\n";
+            if (cart.length === 0) { alert("السلة فارغة!"); return; }
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            if (!name || !address || !phone) { alert("يرجى إكمال بيانات الشحن."); return; }
             
-            orderText += "🛍️ *المنتجات المطلوبة:*\n";
+            let txt = "🌟 *طلب شراء جديد - أخِلَّاء للعطور* 🌟\n\n";
+            txt += "👤 *بيانات الشحن للمستلم:*\n";
+            txt += "الاسم: " + name + "\n";
+            txt += "العنوان: " + address + "\n";
+            txt += "الهاتف: " + phone + "\n\n";
+            txt += "💳 *طريقة الدفع المختارة:*\n" + payment + "\n\n";
+            txt += "🛍️ *المنتجات المطلوبة:*\n";
             let total = 0;
             cart.forEach((item, i) => {
-                orderText += (i+1) + ". " + item.name + " (" + item.size + ") - " + item.price + " ج.م\n";
+                txt += `${i+1}. ${item.name} (${item.size}) - ${item.price} ج.م\n`;
                 total += item.price;
             });
-
-            orderText += "\n💰 *إجمالي الحساب (بدون الشحن):* " + total + " ج.م\n";
+            txt += "\n💰 *الإجمالي الكلي الفاتورة:* " + total + " ج.م\n";
             
-            // رقمك الحقيقي
-            const waNumber = "201212946789"; 
-            const encodedText = encodeURIComponent(orderText);
-            const waLink = `https://wa.me/${waNumber}?text=${encodedText}`;
-            
-            // فتح واتساب
-            window.open(waLink, '_blank');
-            
-            // تفريغ السلة بعد الطلب
+            window.open(`https://wa.me/201212946789?text=${encodeURIComponent(txt)}`, '_blank');
             localStorage.removeItem('akhlaaCart');
             loadCart();
         }
-
-        // تحميل السلة عند فتح الصفحة
         window.onload = loadCart;
     </script>
 </body>
