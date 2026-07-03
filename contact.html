@@ -7,48 +7,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --brand-yellow: #e6c328; --brand-black: #111111; }
+        /* الهوية البصرية الصارمة: أصفر وأسود فقط */
+        :root {
+            --brand-yellow: #e6c328;
+            --brand-black: #111111;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--brand-yellow); color: var(--brand-black); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--brand-yellow);
+            color: var(--brand-black); 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* ---------------- التأثيرات الحركية ---------------- */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* القائمة العلوية */
         header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
         .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
-        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; padding: 5px 10px; }
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; }
         nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
         .cart-icon { position: relative; font-size: 1.2em; font-weight: 900 !important; }
         .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
-        
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        .contact-card { background-color: var(--brand-black); color: var(--brand-yellow); padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); text-align: right; }
-        .contact-card h2 { font-size: 2em; margin-bottom: 25px; font-weight: 900; border-bottom: 2px solid var(--brand-yellow); padding-bottom: 10px; }
-        .contact-info-list { list-style: none; }
-        .contact-info-list li { font-size: 1.2em; margin-bottom: 20px; font-weight: 700; }
-        .contact-info-list i { margin-left: 10px; font-size: 1.3em; }
-        .contact-info-list a { color: var(--brand-yellow); text-decoration: none; }
+        @media (min-width: 768px) { nav ul { margin-top: 0; gap: 20px; } }
 
-        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; }
+        /* الواجهة */
+        .hero { position: relative; height: 40vh; min-height: 250px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--brand-black); border-bottom: 3px solid var(--brand-black); }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; padding: 20px; }
+        .hero h1 { font-size: 3em; color: var(--brand-yellow); margin-bottom: 15px; font-weight: 900; }
+        .hero p { font-size: 1.2em; color: var(--brand-yellow); opacity: 0.9; }
+
+        /* قسم التواصل المطابق للصورة */
+        .contact-container { max-width: 1100px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 768px) { .contact-container { grid-template-columns: 1.2fr 1fr; } }
+
+        .contact-card { background-color: var(--brand-black); color: var(--brand-yellow); padding: 40px; border-radius: 15px; border: 2px solid transparent; transition: all 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .contact-card:hover { border-color: var(--brand-yellow); transform: translateY(-5px); }
+        .contact-card h2 { font-size: 1.8em; margin-bottom: 30px; font-weight: 900; border-bottom: 2px solid var(--brand-yellow); padding-bottom: 15px; display: inline-block; }
+
+        /* نموذج المراسلة */
+        .form-group { margin-bottom: 20px; text-align: right; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background-color: transparent; border: 1px solid var(--brand-yellow); color: var(--brand-yellow); border-radius: 8px; font-family: 'Tajawal'; font-size: 1em; outline: none; transition: 0.3s; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--brand-yellow); opacity: 0.5; }
+        .form-group input:focus, .form-group textarea:focus { background-color: rgba(230, 195, 40, 0.05); box-shadow: 0 0 10px rgba(230, 195, 40, 0.2); }
+        
+        .btn-submit { background-color: var(--brand-yellow); color: var(--brand-black); border: none; padding: 15px 30px; border-radius: 30px; font-weight: 900; font-size: 1.1em; cursor: pointer; transition: all 0.3s; width: 100%; }
+        .btn-submit:hover { background-color: #fff; }
+        
+        #formStatus { margin-top: 15px; font-weight: bold; font-size: 1.1em; text-align: center; }
+
+        /* معلومات التواصل */
+        .info-list { list-style: none; }
+        .info-list li { display: flex; align-items: center; gap: 15px; font-size: 1.2em; margin-bottom: 25px; font-weight: 700; }
+        .info-list i { font-size: 1.5em; color: var(--brand-yellow); width: 30px; text-align: center; }
+        .info-list a { color: var(--brand-yellow); text-decoration: none; transition: 0.3s; }
+        .info-list a:hover { opacity: 0.7; }
+
+        /* أيقونات السوشيال ميديا بالهوية الصارمة */
+        .social-icons-contact { display: flex; gap: 20px; margin-top: 30px; border-top: 1px solid rgba(230, 195, 40, 0.2); padding-top: 25px; }
+        .social-icons-contact a { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--brand-yellow); color: var(--brand-yellow); font-size: 1.5em; text-decoration: none; transition: all 0.3s; }
+        .social-icons-contact a:hover { background-color: var(--brand-yellow); color: var(--brand-black); transform: translateY(-5px); }
+
+        /* الفوتر */
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; border-top: 2px solid var(--brand-yellow); margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
-        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); opacity: 0.9; }
+        .footer-col p { font-size: 1em; line-height: 1.6; opacity: 0.9; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--brand-yellow); text-decoration: none; font-weight: 700; opacity: 0.9; }
-        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; opacity: 1; }
         .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
-        .footer-contact i { color: var(--brand-yellow); }
-        .footer-contact a { color: var(--brand-yellow); text-decoration: none; }
+        .footer-contact i { font-size: 1.2em; }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; transition: 0.3s; }
+        .footer-contact a:hover { font-weight: 900; }
         .footer-social { display: flex; gap: 15px; margin-top: 20px; }
-        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; transition: transform 0.3s; }
+        .footer-social a:hover { transform: translateY(-5px); }
         .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
-        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-weight: 700; opacity: 0.8; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; font-weight: 700; opacity: 0.8; }
         .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo"><a href="index.html">أخِلَّاء للعطور</a></div>
+        <div class="logo">
+            <a href="index.html">أخِلَّاء للعطور</a>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
@@ -60,32 +117,178 @@
             </ul>
         </nav>
     </header>
-    <div class="contact-grid reveal">
-        <section class="contact-card">
-            <h2>قنوات التواصل الرسمية</h2>
-            <ul class="contact-info-list">
-                <li><i class="fa-solid fa-phone"></i> هاتف: <a href="tel:+201212946789">+201212946789</a></li>
-                <li><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> واتساب مباشر: <a href="https://wa.me/201212946789" target="_blank">اضغط للمحادثة المباشرة</a></li>
-                <li><i class="fa-brands fa-facebook"></i> فيسبوك: <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
-                <li><i class="fa-brands fa-tiktok"></i> تيك توك: <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank">AkhlaaFragrances@</a></li>
-                <li><i class="fa-solid fa-location-dot"></i> المقر واللوجستيات: جمهورية مصر العربية</li>
-            </ul>
-        </section>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>تواصل معنا</h1>
+            <p>نسعد بخدمتكم والرد على استفساراتكم واقتراحاتكم</p>
+        </div>
     </div>
+
+    <div class="contact-container reveal">
+        
+        <div class="contact-card">
+            <h2>أرسل رسالة</h2>
+            <form id="contactForm">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="الاسم بالكامل" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="البريد الإلكتروني (اختياري)">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك أو استفسارك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="submitBtn">إرسال الرسالة</button>
+                <div id="formStatus"></div>
+            </form>
+        </div>
+
+        <div class="contact-card">
+            <h2>معلومات التواصل</h2>
+            <ul class="info-list">
+                <li><i class="fa-solid fa-phone"></i> <span>هاتف وواتساب: <br><a href="https://wa.me/201212946789" target="_blank">+201212946789</a></span></li>
+                <li><i class="fa-brands fa-facebook"></i> <span>فيسبوك: <br><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></span></li>
+                <li><i class="fa-brands fa-tiktok"></i> <span>تيك توك: <br><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank">AkhlaaFragrances@</a></span></li>
+                <li><i class="fa-solid fa-location-dot"></i> <span>العنوان: <br>جمهورية مصر العربية (شحن لجميع المحافظات)</span></li>
+                <li><i class="fa-regular fa-clock"></i> <span>مواعيد العمل: <br>متاح للرد على استفساراتكم 24/7</span></li>
+            </ul>
+
+            <div class="social-icons-contact">
+                <a href="https://wa.me/201212946789" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+
+    </div>
+
     <footer class="site-footer">
         <div class="footer-grid">
-            <div class="footer-col"><h3>أخِلَّاء للعطور</h3><p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p></div>
-            <div class="footer-col"><h4>روابط سريعة</h4><ul class="footer-links"><li><a href="index.html">الرئيسية</a></li><li><a href="perfumes.html">جميع المنتجات</a></li><li><a href="offers.html">العروض والباقات</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
-            <div class="footer-col"><h4>الفئات</h4><ul class="footer-links"><li><a href="perfumes.html">العطور</a></li><li><a href="musks.html">المسكات</a></li></ul></div>
-            <div class="footer-col"><h4>تواصل معنا</h4><ul class="footer-links footer-contact"><li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li><li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li></ul><div class="footer-social"><a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a></div></div>
+            <div class="footer-col">
+                <h3>أخِلَّاء للعطور</h3>
+                <p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="perfumes.html">جميع المنتجات</a></li>
+                    <li><a href="offers.html">العروض والباقات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>الفئات</h4>
+                <ul class="footer-links">
+                    <li><a href="perfumes.html">العطور</a></li>
+                    <li><a href="musks.html">المسكات</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li>
+                    <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://wa.me/201212946789" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" aria-label="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
         </div>
-        <hr class="footer-divider"><div class="footer-bottom"><p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p><p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p></div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p>
+            <p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p>
+        </div>
     </footer>
+
     <script>
+        // تحديث رقم السلة
         document.addEventListener("DOMContentLoaded", function() {
             let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             document.getElementById('cart-count').innerText = cart.length;
-            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+
+            // الأنيميشن
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, revealOptions);
+            revealElements.forEach(el => revealOnScroll.observe(el));
+        });
+
+        // ---------------- برمجة نظام إرسال الرسائل (FormSubmit) ----------------
+        // تنبيه: استبدل YOUR_EMAIL@gmail.com بالإيميل اللي عايز تستقبل عليه الرسائل
+        const form = document.getElementById('contactForm');
+        const statusEl = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                statusEl.textContent = 'يرجى ملء الحقول الإجبارية (الاسم، الهاتف، الرسالة).';
+                return;
+            }
+
+            // تجهيز البيانات
+            const params = new URLSearchParams();
+            params.set('الاسم', name);
+            params.set('الهاتف', phone);
+            params.set('الإيميل', email);
+            params.set('الرسالة', message);
+            params.set('_subject', 'رسالة جديدة من موقع أخلاء للعطور');
+            params.set('_captcha', 'false');
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'جارِ الإرسال...';
+                statusEl.textContent = '';
+
+                // ضع إيميلك الحقيقي بدلاً من الايميل الوهمي بالأسفل
+                const res = await fetch('https://formsubmit.co/ajax/akhlaafragrances@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: params
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success === "true") {
+                    statusEl.textContent = 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
+                    form.reset();
+                } else {
+                    // رسالة تفعيل FormSubmit
+                    if (data.message && data.message.includes('activate')) {
+                        statusEl.textContent = 'يرجى تأكيد إيميلك من صندوق الوارد لتفعيل الخدمة لأول مرة.';
+                    } else {
+                        statusEl.textContent = 'تعذر الإرسال، حاول مرة أخرى.';
+                    }
+                }
+            } catch (err) {
+                statusEl.textContent = 'حدث خطأ في الاتصال بالإنترنت.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'إرسال الرسالة';
+            }
         });
     </script>
 </body>
