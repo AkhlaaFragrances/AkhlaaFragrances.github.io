@@ -2,57 +2,64 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخِلَّاء للعطور | الباقات والعروض</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #fafafa; color: #222222; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
-        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo-text { color: #000000; font-size: 28px; font-weight: 700; }
-        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
-        nav ul li a:hover { color: #e6c328; }
-        
-        .products-section { padding: 60px 20px; text-align: center; }
-        .section-title { font-size: 2.2em; margin-bottom: 50px; color: #111111; position: relative; display: inline-block; }
-        .section-title::after { content: ""; width: 50%; height: 3px; background-color: #e6c328; position: absolute; bottom: -15px; right: 25%; }
-
-        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        
-        /* الكرت قابل للضغط بالكامل */
-        .product-card { 
-            background-color: #ffffff; border: 2px solid #e6c328; border-radius: 12px; padding: 20px; width: 320px; box-shadow: 0 4px 15px rgba(230, 195, 40, 0.1); display: flex; flex-direction: column; text-align: right; transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(230, 195, 40, 0.2); }
-
-        .product-image-container { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; position: relative; }
-        .product-image { width: 100%; height: 250px; background-color: #fffdf5; object-fit: cover; transition: transform 0.3s; }
-        .product-card:hover .product-image { transform: scale(1.05); }
-        
-        .badge { position: absolute; top: 10px; right: 10px; background-color: #d32f2f; color: #ffffff; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9em; z-index: 2; }
-
-        .product-name { color: #d32f2f; font-size: 1.6em; margin: 0 0 5px 0; font-weight: 700; transition: color 0.3s; }
-        .product-card:hover .product-name { color: #111111; }
-        
-        .product-price { color: #b89b1c; font-size: 1.3em; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .old-price { text-decoration: line-through; color: #aaaaaa; font-size: 0.8em; }
-
-        /* منع التداخل */
-        .sizes-wrapper { display: flex; justify-content: flex-start; gap: 10px; margin-bottom: 20px; cursor: default; }
-        .sizes-wrapper input[type="radio"] { display: none; }
-        .sizes-wrapper label { padding: 6px 15px; border: 1px solid #e6c328; border-radius: 20px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: #b89b1c; transition: 0.3s; }
-        .sizes-wrapper input[type="radio"]:checked + label { background-color: #e6c328; color: #ffffff; }
-
-        .btn-order { display: block; background-color: #e6c328; color: #111111; border: none; padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: 0.3s; cursor: pointer; width: 100%; text-align: center; }
-        .btn-order:hover { background-color: #111111; color: #e6c328; }
-
-        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
+        :root { --brand-yellow: #e6c328; --brand-black: #111111; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--brand-yellow); color: var(--brand-black); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; padding: 5px 10px; }
+        nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
+        .cart-icon { position: relative; font-size: 1.2em; font-weight: 900 !important; }
+        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
+        .hero { relative; height: 40vh; min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--brand-black); border-bottom: 3px solid var(--brand-black); }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; padding: 20px; }
+        .hero h1 { font-size: 3.5em; color: var(--brand-yellow); margin-bottom: 15px; font-weight: 900; }
+        .section-wrapper { padding: 80px 5%; text-align: center; }
+        .title-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.5em; color: var(--brand-black); font-weight: 900; margin-bottom: 5px; }
+        .title-line { width: 80px; height: 4px; background-color: var(--brand-black); border-radius: 2px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; justify-items: center; }
+        .product-card { background-color: var(--brand-black); border-radius: 15px; padding: 25px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
+        .product-card:hover { transform: translateY(-10px); border: 1px solid var(--brand-yellow); }
+        .product-image-container { display: block; margin-bottom: 20px; overflow: hidden; border-radius: 10px; border: 1px solid var(--brand-yellow); }
+        .product-image { width: 100%; height: 260px; object-fit: cover; opacity: 0.9; }
+        .product-name { color: var(--brand-yellow); font-size: 1.6em; margin: 0 0 10px 0; font-weight: 900; }
+        .product-desc { color: var(--brand-yellow); font-size: 0.95em; line-height: 1.6; margin-bottom: 15px; font-weight: 400; opacity: 0.8; }
+        .product-price { color: var(--brand-yellow); font-size: 1.4em; font-weight: 900; margin-bottom: 20px; }
+        .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: none; padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.1em; width: 100%; text-align: center; cursor: pointer; }
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
+        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); opacity: 0.9; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
+        .footer-contact i { color: var(--brand-yellow); }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; }
+        .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-weight: 700; opacity: 0.8; }
+        .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; border: 1px solid var(--brand-yellow); }
+        .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo-text">أخِلَّاء للعطور</div>
+        <div class="logo"><a href="index.html">أخِلَّاء للعطور</a></div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
@@ -60,70 +67,47 @@
                 <li><a href="offers.html">الباقات والعروض</a></li>
                 <li><a href="musks.html">المسكات</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="cart.html" class="cart-icon">🛒 السلة <span class="cart-badge" id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
-
-    <div class="products-section">
-        <h2 class="section-title">الباقات الخاصة</h2>
-        <div class="grid-container">
-            
-            <div class="product-card" onclick="window.location.href='product1.html';">
-                
-                <div class="product-image-container">
-                    <span class="badge">الأكثر مبيعاً</span>
-                    <img src="" alt="" class="product-image">
-                </div>
-                
-                <h3 class="product-name">باندل الـ 3 عطور</h3>
-                
-                <div class="product-price">
-                    <span id="new-price-o1">1200 ج.م</span>
-                    <span class="old-price" id="old-price-o1">1500 ج.م</span>
-                </div>
-                
-                <div class="sizes-wrapper" onclick="event.stopPropagation();">
-                    <input type="radio" name="size-o1" id="o1-35" value="بحجم 35 مل" onchange="document.getElementById('new-price-o1').innerText='850 ج.م'; document.getElementById('old-price-o1').innerText='1050 ج.م';">
-                    <label for="o1-35">35 مل</label>
-                    
-                    <input type="radio" name="size-o1" id="o1-55" value="بحجم 55 مل" checked onchange="document.getElementById('new-price-o1').innerText='1200 ج.م'; document.getElementById('old-price-o1').innerText='1500 ج.م';">
-                    <label for="o1-55">55 مل</label>
-                    
-                    <input type="radio" name="size-o1" id="o1-110" value="بحجم 110 مل" onchange="document.getElementById('new-price-o1').innerText='2300 ج.م'; document.getElementById('old-price-o1').innerText='2700 ج.م';">
-                    <label for="o1-110">110 مل</label>
-                </div>
-                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-o1]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باندل الـ 3 عطور) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
+    <div class="hero"><div class="hero-bg"></div><div class="hero-content"><h1>الباقات والعروض</h1></div></div>
+    <div class="section-wrapper reveal">
+        <div class="title-container"><h2 class="section-title">باقات النخبة التوفيرية</h2><div class="title-line"></div></div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image-container"><img src="" alt="" class="product-image"></div>
+                <h3 class="product-name" id="name-o1">باقة الأخلاء المزدوجة</h3>
+                <p class="product-desc">تحتوي الباقة على عبوة عطر النخبة الفاخر (55 مل) بالإضافة إلى عبوة عطر الجاذبية (55 مل). هرم عطري متكامل يناسب حضورك اليومي والمناسبات الرسمية.</p>
+                <div class="product-price">850 ج.م <span style="font-size: 0.7em; text-decoration: line-through; opacity: 0.6;">950 ج.م</span></div>
+                <button class="btn-order" onclick="let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || []; cart.push({ id: 'o1', name: 'باقة الأخلاء المزدوجة', size: 'عطرين 55مل', price: 850 }); localStorage.setItem('akhlaaCart', JSON.stringify(cart)); document.getElementById('cart-count').innerText = cart.length; const t = document.getElementById('toast'); t.className = 'toast show'; setTimeout(function(){ t.className = 'toast'; }, 3000);">أضف إلى السلة 🛒</button>
             </div>
-
-            <div class="product-card" onclick="window.location.href='product1.html';">
-                
-                <div class="product-image-container">
-                    <span class="badge">حصري</span>
-                    <img src="" alt="" class="product-image">
-                </div>
-                
-                <h3 class="product-name">باقة العرسان الفاخرة</h3>
-                
-                <div class="product-price">
-                    <span id="new-price-o2">1150 ج.م</span>
-                    <span class="old-price" id="old-price-o2">1400 ج.م</span>
-                </div>
-                
-                <div class="sizes-wrapper" onclick="event.stopPropagation();">
-                    <input type="radio" name="size-o2" id="o2-35" value="بحجم 35 مل" onchange="document.getElementById('new-price-o2').innerText='850 ج.م'; document.getElementById('old-price-o2').innerText='1000 ج.م';">
-                    <label for="o2-35">35 مل</label>
-                    
-                    <input type="radio" name="size-o2" id="o2-55" value="بحجم 55 مل" checked onchange="document.getElementById('new-price-o2').innerText='1150 ج.م'; document.getElementById('old-price-o2').innerText='1400 ج.م';">
-                    <label for="o2-55">55 مل</label>
-                </div>
-                <button class="btn-order" onclick="event.stopPropagation(); let size = document.querySelector('input[name=size-o2]:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (باقة العرسان الفاخرة) ' + size, '_blank');">🛒 اطلب العرض الآن</button>
-            </div>
-
         </div>
     </div>
-    <footer>
-        <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
-        <p>جميع الحقوق محفوظة © 2026</p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col"><h3>أخِلَّاء للعطور</h3><p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p></div>
+            <div class="footer-col"><h4>روابط سريعة</h4><ul class="footer-links"><li><a href="index.html">الرئيسية</a></li><li><a href="perfumes.html">جميع المنتجات</a></li><li><a href="offers.html">العروض والباقات</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+            <div class="footer-col"><h4>الفئات</h4><ul class="footer-links"><li><a href="perfumes.html">العطور</a></li><li><a href="musks.html">المسكات</a></li></ul></div>
+            <div class="footer-col"><h4>تواصل معنا</h4><ul class="footer-links footer-contact"><li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li><li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li></ul><div class="footer-social"><a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a></div></div>
+        </div>
+        <hr class="footer-divider"><div class="footer-bottom"><p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p><p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p></div>
     </footer>
+    <div id="toast" class="toast">تم إضافة العبوة إلى السلة بنجاح!</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
 </body>
 </html>
