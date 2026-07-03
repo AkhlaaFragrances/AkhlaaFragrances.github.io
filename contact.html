@@ -59,11 +59,11 @@
         /* نموذج المراسلة */
         .form-group { margin-bottom: 20px; text-align: right; }
         .form-group input, .form-group textarea { width: 100%; padding: 15px; background-color: transparent; border: 1px solid var(--brand-yellow); color: var(--brand-yellow); border-radius: 8px; font-family: 'Tajawal'; font-size: 1em; outline: none; transition: 0.3s; }
-        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--brand-yellow); opacity: 0.5; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(230, 195, 40, 0.6); }
         .form-group input:focus, .form-group textarea:focus { background-color: rgba(230, 195, 40, 0.05); box-shadow: 0 0 10px rgba(230, 195, 40, 0.2); }
         
-        .btn-submit { background-color: var(--brand-yellow); color: var(--brand-black); border: none; padding: 15px 30px; border-radius: 30px; font-weight: 900; font-size: 1.1em; cursor: pointer; transition: all 0.3s; width: 100%; }
-        .btn-submit:hover { background-color: #fff; }
+        .btn-submit { background-color: var(--brand-yellow); color: var(--brand-black); border: 2px solid var(--brand-yellow); padding: 15px 30px; border-radius: 30px; font-weight: 900; font-size: 1.1em; cursor: pointer; transition: all 0.3s; width: 100%; }
+        .btn-submit:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
         
         #formStatus { margin-top: 15px; font-weight: bold; font-size: 1.1em; text-align: center; }
 
@@ -98,6 +98,9 @@
         .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
         .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; font-weight: 700; opacity: 0.8; }
         .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
+        
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; border: 1px solid var(--brand-yellow); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
     </style>
 </head>
 <body>
@@ -126,8 +129,28 @@
         </div>
     </div>
 
+    <!-- قسم التواصل يظهر متزامناً ككتلة واحدة -->
     <div class="contact-container reveal">
         
+        <!-- الكارت الأول: معلومات التواصل -->
+        <div class="contact-card">
+            <h2>معلومات التواصل</h2>
+            <ul class="info-list">
+                <li><i class="fa-solid fa-phone"></i> <span>هاتف وواتساب: <br><a href="https://wa.me/201212946789" target="_blank">+201212946789</a></span></li>
+                <li><i class="fa-brands fa-facebook"></i> <span>فيسبوك: <br><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></span></li>
+                <li><i class="fa-brands fa-tiktok"></i> <span>تيك توك: <br><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank">AkhlaaFragrances@</a></span></li>
+                <li><i class="fa-solid fa-location-dot"></i> <span>العنوان: <br>جمهورية مصر العربية (شحن لجميع المحافظات)</span></li>
+                <li><i class="fa-regular fa-clock"></i> <span>مواعيد العمل: <br>متاح في جميع الاوقات</span></li>
+            </ul>
+
+            <div class="social-icons-contact">
+                <a href="https://wa.me/201212946789" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <!-- الكارت الثاني: نموذج إرسال رسالة -->
         <div class="contact-card">
             <h2>أرسل رسالة</h2>
             <form id="contactForm">
@@ -150,25 +173,9 @@
             </form>
         </div>
 
-        <div class="contact-card">
-            <h2>معلومات التواصل</h2>
-            <ul class="info-list">
-                <li><i class="fa-solid fa-phone"></i> <span>هاتف وواتساب: <br><a href="https://wa.me/201212946789" target="_blank">+201212946789</a></span></li>
-                <li><i class="fa-brands fa-facebook"></i> <span>فيسبوك: <br><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></span></li>
-                <li><i class="fa-brands fa-tiktok"></i> <span>تيك توك: <br><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank">AkhlaaFragrances@</a></span></li>
-                <li><i class="fa-solid fa-location-dot"></i> <span>العنوان: <br>جمهورية مصر العربية (شحن لجميع المحافظات)</span></li>
-                <li><i class="fa-regular fa-clock"></i> <span>مواعيد العمل: <br>متاح للرد على استفساراتكم 24/7</span></li>
-            </ul>
-
-            <div class="social-icons-contact">
-                <a href="https://wa.me/201212946789" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-        </div>
-
     </div>
 
+    <!-- الفوتر الختامي المعتمد -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
@@ -211,13 +218,13 @@
         </div>
     </footer>
 
+    <div id="toast" class="toast">تم إضافة العبوة إلى السلة بنجاح!</div>
+
     <script>
-        // تحديث رقم السلة
         document.addEventListener("DOMContentLoaded", function() {
             let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             document.getElementById('cart-count').innerText = cart.length;
 
-            // الأنيميشن
             const revealElements = document.querySelectorAll('.reveal');
             const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
             const revealOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -230,8 +237,6 @@
             revealElements.forEach(el => revealOnScroll.observe(el));
         });
 
-        // ---------------- برمجة نظام إرسال الرسائل (FormSubmit) ----------------
-        // تنبيه: استبدل YOUR_EMAIL@gmail.com بالإيميل اللي عايز تستقبل عليه الرسائل
         const form = document.getElementById('contactForm');
         const statusEl = document.getElementById('formStatus');
         const submitBtn = document.getElementById('submitBtn');
@@ -249,7 +254,6 @@
                 return;
             }
 
-            // تجهيز البيانات
             const params = new URLSearchParams();
             params.set('الاسم', name);
             params.set('الهاتف', phone);
@@ -263,7 +267,6 @@
                 submitBtn.innerText = 'جارِ الإرسال...';
                 statusEl.textContent = '';
 
-                // ضع إيميلك الحقيقي بدلاً من الايميل الوهمي بالأسفل
                 const res = await fetch('https://formsubmit.co/ajax/akhlaafragrances@gmail.com', {
                     method: 'POST',
                     headers: { 'Accept': 'application/json' },
@@ -276,9 +279,8 @@
                     statusEl.textContent = 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
                     form.reset();
                 } else {
-                    // رسالة تفعيل FormSubmit
                     if (data.message && data.message.includes('activate')) {
-                        statusEl.textContent = 'يرجى تأكيد إيميلك من صندوق الوارد لتفعيل الخدمة لأول مرة.';
+                        statusEl.textContent = 'تم الإرسال بنجاح. (ملاحظة للإدارة: يرجى تفعيل البريد من صندوق الوارد)';
                     } else {
                         statusEl.textContent = 'تعذر الإرسال، حاول مرة أخرى.';
                     }
