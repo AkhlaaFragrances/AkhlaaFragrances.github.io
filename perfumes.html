@@ -4,78 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخِلَّاء للعطور | المجموعات العطرية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --brand-yellow: #e6c328;
-            --dark-bg: #0a0a0a;
-            --card-bg: #141414;
-            --text-light: #ffffff;
-            --text-gray: #aaaaaa;
+            --brand-black: #111111;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--dark-bg); color: var(--text-light); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        body { background-color: var(--brand-yellow); color: var(--brand-black); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
 
-        header { background-color: var(--dark-bg); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--brand-yellow); position: sticky; top: 0; z-index: 100; }
-        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        /* الأنيميشن المتزامن */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
-        nav ul li a { text-decoration: none; color: var(--text-light); font-weight: 700; font-size: 16px; transition: color 0.3s ease; }
-        nav ul li a:hover { color: var(--brand-yellow); }
-        
-        .cart-icon { position: relative; font-size: 1.2em; color: var(--brand-yellow) !important; }
-        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: #d32f2f; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7em; font-weight: bold; }
-        @media (min-width: 768px) { nav ul { margin-top: 0; gap: 25px; } }
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; padding: 5px 10px; }
+        nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
+        .cart-icon { position: relative; font-size: 1.2em; font-weight: 900 !important; }
+        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
 
-        .hero { position: relative; height: 40vh; min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--dark-bg); }
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
-            z-index: 1;
-        }
-        .hero-content { position: relative; z-index: 2; padding: 20px; animation: fadeIn 1.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hero h1 { font-size: 3em; color: var(--brand-yellow); margin-bottom: 10px; font-weight: 700; }
-        .hero p { font-size: 1.2em; color: var(--text-light); font-weight: 400; margin-bottom: 30px; }
+        .hero { position: relative; height: 40vh; min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--brand-black); border-bottom: 3px solid var(--brand-black); }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; padding: 20px; }
+        .hero h1 { font-size: 3.5em; color: var(--brand-yellow); margin-bottom: 15px; font-weight: 900; }
 
         .section-wrapper { padding: 80px 5%; text-align: center; }
-        .section-title { font-size: 2.5em; margin-bottom: 50px; color: var(--brand-yellow); position: relative; display: inline-block; font-weight: 700; }
-        .section-title::after { content: ""; width: 50%; height: 3px; background-color: var(--brand-yellow); position: absolute; bottom: -15px; right: 25%; }
+        .title-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.5em; color: var(--brand-black); font-weight: 900; margin-bottom: 5px; }
+        .title-line { width: 80px; height: 4px; background-color: var(--brand-black); border-radius: 2px; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; justify-items: center; }
-        .product-card { background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 20px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); box-shadow: 0 15px 30px rgba(230, 195, 40, 0.1); }
-        .product-image-container { display: block; margin-bottom: 15px; overflow: hidden; border-radius: 8px; }
-        .product-image { width: 100%; height: 250px; background-color: #222; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-image { transform: scale(1.08); }
-        .product-name { color: var(--text-light); font-size: 1.6em; margin: 0 0 5px 0; font-weight: 700; transition: color 0.3s ease; }
-        .product-card:hover .product-name { color: var(--brand-yellow); }
-        .product-desc { color: var(--text-gray); font-size: 0.95em; line-height: 1.6; margin-bottom: 15px; }
-        .product-price { color: var(--brand-yellow); font-size: 1.3em; font-weight: 700; margin-bottom: 15px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; justify-items: center; }
+        .product-card { background-color: var(--brand-black); border-radius: 15px; padding: 25px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; }
+        .product-card:hover { transform: translateY(-10px); border: 1px solid var(--brand-yellow); }
+        .product-image-container { display: block; margin-bottom: 20px; overflow: hidden; border-radius: 10px; border: 1px solid var(--brand-yellow); }
+        .product-image { width: 100%; height: 260px; object-fit: cover; opacity: 0.9; }
         
-        .sizes-wrapper { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; cursor: default; }
+        .product-name { color: var(--brand-yellow); font-size: 1.6em; margin: 0 0 10px 0; font-weight: 900; }
+        .product-desc { color: var(--brand-yellow); font-size: 0.95em; line-height: 1.6; margin-bottom: 15px; font-weight: 400; opacity: 0.8; }
+        .product-price { color: var(--brand-yellow); font-size: 1.4em; font-weight: 900; margin-bottom: 20px; }
+        
+        .sizes-wrapper { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; cursor: default; }
         .sizes-wrapper input[type="radio"] { display: none; }
-        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 20px; cursor: pointer; font-size: 0.9em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; }
-        .sizes-wrapper input[type="radio"]:checked + label { background-color: var(--brand-yellow); color: var(--dark-bg); }
+        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 25px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: var(--brand-yellow); background-color: var(--brand-black); }
+        .sizes-wrapper input[type="radio"]:checked + label { background-color: var(--brand-yellow); color: var(--brand-black); }
         
-        .btn-order { display: block; background-color: transparent; color: var(--brand-yellow); border: 2px solid var(--brand-yellow); padding: 12px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
-        .btn-order:hover { background-color: var(--brand-yellow); color: var(--dark-bg); }
+        .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: none; padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.1em; width: 100%; text-align: center; cursor: pointer; }
 
-        footer { background-color: var(--card-bg); color: var(--text-gray); text-align: center; padding: 40px 20px; border-top: 2px solid var(--brand-yellow); }
-        
-        .toast { visibility: hidden; min-width: 250px; background-color: #4CAF50; color: white; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
+        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); opacity: 0.9; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
+        .footer-contact i { color: var(--brand-yellow); }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; }
+        .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-weight: 700; opacity: 0.8; }
+        .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; border: 1px solid var(--brand-yellow); }
         .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <a href="index.html">أخِلَّاء للعطور</a>
-        </div>
+        <div class="logo"><a href="index.html">أخِلَّاء للعطور</a></div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
@@ -91,65 +93,89 @@
     <div class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>اكتشف عطرك المفضل</h1>
-            <p>تشكيلة واسعة من أرقى العطور المصممة بهرم عطري متدرج يدوم طويلاً.</p>
+            <h1>المجموعات العطرية</h1>
         </div>
     </div>
 
-    <div class="section-wrapper" id="products">
-        <h2 class="section-title">جميع إصداراتنا العطرية</h2>
+    <div class="section-wrapper reveal">
+        <div class="title-container">
+            <h2 class="section-title">إصدارات العطور الرجالية الفاخرة</h2>
+            <div class="title-line"></div>
+        </div>
         <div class="products-grid">
-            
-            <!-- عطر 1 -->
             <div class="product-card" onclick="window.location.href='product1.html';">
-                <div class="product-image-container">
-                    <img src="" alt="" class="product-image">
-                </div>
-                <h3 class="product-name" id="name-c1">عطر النخبة الفاخر</h3>
-                <p class="product-desc">عبوة تتميز بافتتاحية من البرغموت، وقلب عطري يجمع بين أخشاب الأرز والباتشولي.</p>
-                
-                <div class="product-price" id="price-c1" data-price="500">500 ج.م / 55 مل</div>
-                
+                <div class="product-image-container"><img src="" alt="" class="product-image"></div>
+                <h3 class="product-name" id="name-p1">عطر النخبة الفاخر</h3>
+                <p class="product-desc">عبوة تجسد الفخامة بهرم عطري ذكوري يبدأ بنوتات الحمضيات، وقلب غني بالباتشولي، لينتهي بقاعدة خشبية مكثفة.</p>
+                <div class="product-price" id="price-p1" data-price="500">500 ج.م / 55 مل</div>
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
-                    <input type="radio" name="size-c1" id="c1-35" value="35 مل" data-price="350" onchange="updatePrice('c1', this)">
-                    <label for="c1-35">35 مل</label>
-                    <input type="radio" name="size-c1" id="c1-55" value="55 مل" data-price="500" checked onchange="updatePrice('c1', this)">
-                    <label for="c1-55">55 مل</label>
-                    <input type="radio" name="size-c1" id="c1-110" value="110 مل" data-price="900" onchange="updatePrice('c1', this)">
-                    <label for="c1-110">110 مل</label>
+                    <input type="radio" name="size-p1" id="p1-35" value="35 مل" data-price="350" onchange="updatePrice('p1', this)">
+                    <label for="p1-35">35 مل</label>
+                    <input type="radio" name="size-p1" id="p1-55" value="55 مل" data-price="500" checked onchange="updatePrice('p1', this)">
+                    <label for="p1-55">55 مل</label>
+                    <input type="radio" name="size-p1" id="p1-110" value="110 مل" data-price="900" onchange="updatePrice('p1', this)">
+                    <label for="p1-110">110 مل</label>
                 </div>
-                <button class="btn-order" onclick="event.stopPropagation(); addToCart('c1');">أضف إلى السلة 🛒</button>
+                <button class="btn-order" onclick="event.stopPropagation(); addToCart('p1');">أضف إلى السلة 🛒</button>
             </div>
-
-            <!-- عطر 2 -->
             <div class="product-card" onclick="window.location.href='product1.html';">
-                <div class="product-image-container">
-                    <img src="" alt="" class="product-image">
-                </div>
-                <h3 class="product-name" id="name-c2">عطر الانتعاش الصيفي</h3>
-                <p class="product-desc">نوتات افتتاحية منعشة من الحمضيات، ترتكز على قاعدة ثابتة من المسك الأبيض النقي.</p>
-                
-                <div class="product-price" id="price-c2" data-price="450">450 ج.م / 55 مل</div>
-                
+                <div class="product-image-container"><img src="" alt="" class="product-image"></div>
+                <h3 class="product-name" id="name-p2">عطر الجاذبية</h3>
+                <p class="product-desc">عبوة تعكس الرقي والأناقة بنوتات افتتاحية من الزعفران، وقلب عطري من أخشاب الأرز، وقاعدة من العود الأصيل.</p>
+                <div class="product-price" id="price-p2" data-price="450">450 ج.م / 55 مل</div>
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
-                    <input type="radio" name="size-c2" id="c2-35" value="35 مل" data-price="300" onchange="updatePrice('c2', this)">
-                    <label for="c2-35">35 مل</label>
-                    <input type="radio" name="size-c2" id="c2-55" value="55 مل" data-price="450" checked onchange="updatePrice('c2', this)">
-                    <label for="c2-55">55 مل</label>
-                    <input type="radio" name="size-c2" id="c2-110" value="110 مل" data-price="800" onchange="updatePrice('c2', this)">
-                    <label for="c2-110">110 مل</label>
+                    <input type="radio" name="size-p2" id="p2-35" value="35 مل" data-price="300" onchange="updatePrice('p2', this)">
+                    <label for="p2-35">35 مل</label>
+                    <input type="radio" name="size-p2" id="p2-55" value="55 مل" data-price="450" checked onchange="updatePrice('p2', this)">
+                    <label for="p2-55">55 مل</label>
+                    <input type="radio" name="size-p2" id="p2-110" value="110 مل" data-price="800" onchange="updatePrice('p2', this)">
+                    <label for="p2-110">110 مل</label>
                 </div>
-                <button class="btn-order" onclick="event.stopPropagation(); addToCart('c2');">أضف إلى السلة 🛒</button>
+                <button class="btn-order" onclick="event.stopPropagation(); addToCart('p2');">أضف إلى السلة 🛒</button>
             </div>
-
         </div>
     </div>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 15px;">
-            <a href="index.html" style="color: var(--brand-yellow); font-size: 26px; font-weight: bold; text-decoration: none;">أخِلَّاء للعطور</a>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>أخِلَّاء للعطور</h3>
+                <p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="perfumes.html">جميع المنتجات</a></li>
+                    <li><a href="offers.html">العروض والباقات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>الفئات</h4>
+                <ul class="footer-links">
+                    <li><a href="perfumes.html">العطور</a></li>
+                    <li><a href="musks.html">المسكات</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li>
+                    <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
         </div>
-        <p>جميع الحقوق محفوظة © 2026</p>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p>
+            <p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p>
+        </div>
     </footer>
 
     <div id="toast" class="toast">تم إضافة العبوة إلى السلة بنجاح!</div>
@@ -162,33 +188,38 @@
             priceDisplay.innerText = newPrice + ' ج.م / ' + size;
             priceDisplay.setAttribute('data-price', newPrice);
         }
-
         function addToCart(productId) {
             const name = document.getElementById('name-' + productId).innerText;
             const sizeInput = document.querySelector('input[name="size-' + productId + '"]:checked');
             const size = sizeInput.value;
             const price = parseInt(sizeInput.getAttribute('data-price'));
-            
             let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             cart.push({ id: productId, name: name, size: size, price: price });
             localStorage.setItem('akhlaaCart', JSON.stringify(cart));
-            
             updateCartCount();
             showToast();
         }
-
         function updateCartCount() {
             let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
             document.getElementById('cart-count').innerText = cart.length;
         }
-
         function showToast() {
             const toast = document.getElementById("toast");
             toast.className = "toast show";
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
-
-        window.onload = updateCartCount;
+        document.addEventListener("DOMContentLoaded", function() {
+            updateCartCount();
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
     </script>
 </body>
 </html>
