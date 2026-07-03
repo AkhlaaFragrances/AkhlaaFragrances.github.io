@@ -87,7 +87,7 @@
         .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: 2px solid var(--brand-yellow); padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
         .btn-order:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
 
-        /* الفوتر الاحترافي المعتمد */
+        /* الفوتر الاحترافي */
         .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; border-top: 2px solid var(--brand-yellow); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
         
@@ -142,6 +142,7 @@
         </div>
     </div>
 
+    <!-- قسم المنتجات يظهر متزامناً ككتلة واحدة -->
     <div class="section-wrapper reveal">
         <div class="title-container">
             <h2 class="section-title">إصدارات المسك النقي</h2>
@@ -192,6 +193,7 @@
         </div>
     </div>
 
+    <!-- الفوتر الختامي -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
@@ -270,7 +272,7 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // الأنيميشن المتزامن لقسم المسكات
+        // الأنيميشن المتزامن 
         document.addEventListener("DOMContentLoaded", function() {
             updateCartCount();
 
