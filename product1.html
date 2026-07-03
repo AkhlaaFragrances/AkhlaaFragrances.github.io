@@ -2,142 +2,334 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>أخِلَّاء للعطور | تفاصيل العطر</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عطر النخبة الفاخر | أخِلَّاء للعطور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #fafafa; color: #222222; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
-        header { background-color: #ffffff; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e6c328; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo-text { color: #000000; font-size: 28px; font-weight: 700; }
-        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: color 0.3s; }
-        nav ul li a:hover { color: #e6c328; }
+        /* الهوية البصرية الصارمة: أصفر وأسود فقط */
+        :root {
+            --brand-yellow: #e6c328;
+            --brand-black: #111111;
+        }
 
-        .product-details-container {
-            max-width: 1100px;
-            margin: 60px auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 50px;
-            padding: 20px;
-            background-color: #ffffff;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--brand-yellow);
+            color: var(--brand-black); 
+            font-family: 'Tajawal', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* ---------------- الهيدر والسلة المستقلة ---------------- */
+        header { 
+            background-color: var(--brand-black); 
+            padding: 15px 5%; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--brand-yellow); 
+        }
+        
+        .header-right { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5px; align-items: center;}
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; }
+        nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
+        
+        .cart-standalone {
+            background-color: transparent;
+            border: 2px solid var(--brand-yellow);
+            color: var(--brand-yellow);
+            width: 50px; 
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid #eeeeee;
-        }
-
-        .product-image-side { flex: 1; min-width: 300px; }
-        .product-image-side img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            background-color: #f5f5f5;
-            border: 1px solid #eaeaea;
-        }
-
-        .product-info-side { flex: 1.2; min-width: 300px; display: flex; flex-direction: column; justify-content: center; }
-        .product-category { color: #b89b1c; font-weight: 700; font-size: 1.1em; margin-bottom: 10px; }
-        .product-title { font-size: 2.8em; color: #111111; margin-bottom: 15px; margin-top: 0; }
-        
-        /* السعر الكبير في صفحة التفاصيل */
-        .product-price-large { color: #b89b1c; font-size: 2.2em; font-weight: 700; margin-bottom: 25px; }
-        
-        .product-desc { color: #555555; font-size: 1.15em; line-height: 1.8; margin-bottom: 30px; }
-
-        .sizes-title { font-size: 1.2em; font-weight: 700; margin-bottom: 15px; color: #111111; }
-        
-        /* أزرار الأحجام لصفحة التفاصيل */
-        .sizes-options { display: flex; gap: 15px; margin-bottom: 40px; }
-        .sizes-options input[type="radio"] { display: none; }
-        .sizes-options label {
-            padding: 10px 25px;
-            border: 2px solid #e6c328;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.1em;
-            color: #b89b1c;
+            font-size: 1.5em;
+            position: relative;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
-        .sizes-options label:hover { background-color: #fffcf0; }
-        .sizes-options input[type="radio"]:checked + label {
-            background-color: #e6c328;
-            color: #ffffff;
+        .cart-standalone:hover { background-color: var(--brand-yellow); color: var(--brand-black); transform: scale(1.05); }
+        .cart-badge { position: absolute; top: -8px; right: -8px; background-color: #d32f2f; color: #fff; border-radius: 50%; padding: 3px 7px; font-size: 0.6em; font-weight: bold; border: 2px solid var(--brand-black); }
+
+        /* ---------------- تفاصيل المنتج ---------------- */
+        .product-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .product-container { grid-template-columns: 1fr; }
         }
 
-        .btn-buy {
-            background-color: #111111;
-            color: #e6c328;
-            border: none;
-            padding: 18px;
-            font-size: 1.3em;
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 700;
-            border-radius: 25px;
-            cursor: pointer;
+        /* جزء الصورة */
+        .product-image-box {
+            background-color: var(--brand-black);
+            border: 2px solid var(--brand-yellow);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             text-align: center;
-            text-decoration: none;
-            transition: 0.3s;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
         }
-        .btn-buy:hover { background-color: #e6c328; color: #111111; }
+        .product-image-box img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 10px;
+            opacity: 0.95;
+            transition: transform 0.4s ease;
+        }
+        .product-image-box img:hover { transform: scale(1.03); }
 
-        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 4px solid #e6c328; }
+        /* جزء المعلومات */
+        .product-info-box {
+            background-color: var(--brand-black);
+            color: var(--brand-yellow);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .product-info-box h1 { font-size: 2.8em; font-weight: 900; margin-bottom: 15px; border-bottom: 2px solid rgba(230, 195, 40, 0.3); padding-bottom: 15px; }
+        .product-category { font-size: 1.1em; opacity: 0.8; font-weight: 700; margin-bottom: 20px; display: inline-block; background-color: rgba(230, 195, 40, 0.1); padding: 5px 15px; border-radius: 20px; }
+        .product-description { font-size: 1.1em; line-height: 1.8; opacity: 0.9; margin-bottom: 30px; }
+
+        /* الهرم العطري (النوتات) */
+        .fragrance-notes {
+            margin-bottom: 30px;
+            background-color: rgba(230, 195, 40, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid var(--brand-yellow);
+        }
+        .fragrance-notes h3 { font-size: 1.3em; margin-bottom: 15px; font-weight: 900; }
+        .note-level { display: flex; align-items: baseline; margin-bottom: 12px; }
+        .note-title { font-weight: 900; width: 100px; color: var(--brand-yellow); }
+        .note-desc { font-weight: 400; opacity: 0.9; flex: 1; }
+
+        /* السعر والأحجام */
+        .product-price-display { font-size: 2.2em; font-weight: 900; margin-bottom: 25px; color: var(--brand-yellow); }
+        
+        .sizes-wrapper { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
+        .sizes-wrapper input[type="radio"] { display: none; }
+        .sizes-wrapper label { padding: 10px 25px; border: 2px solid var(--brand-yellow); border-radius: 30px; cursor: pointer; font-size: 1.1em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; }
+        .sizes-wrapper input[type="radio"]:checked + label { background-color: var(--brand-yellow); color: var(--brand-black); }
+
+        .btn-add-cart {
+            width: 100%;
+            background-color: var(--brand-yellow);
+            color: var(--brand-black);
+            padding: 18px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-add-cart:hover { background-color: #fff; }
+
+        /* الفوتر */
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; border-top: 2px solid var(--brand-black); margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
+        .footer-col p { font-size: 1em; line-height: 1.6; opacity: 0.9; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; opacity: 1; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; transition: transform 0.3s; }
+        .footer-social a:hover { transform: translateY(-5px); }
+        .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; font-weight: 700; opacity: 0.8; }
+        .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
+
+        /* التنبيه */
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; border: 1px solid var(--brand-yellow); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-text">أخِلَّاء للعطور</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="perfumes.html">المجموعات العطرية</a></li>
-                <li><a href="offers.html">الباقات والعروض</a></li>
-                <li><a href="musks.html">المسكات</a></li>
-                <li><a href="contact.html">تواصل معنا</a></li>
-            </ul>
-        </nav>
+        <div class="header-right">
+            <div class="logo">
+                <a href="index.html">أخِلَّاء للعطور</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="perfumes.html">المجموعات العطرية</a></li>
+                    <li><a href="offers.html">الباقات والعروض</a></li>
+                    <li><a href="musks.html">المسكات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+        <a href="cart.html" class="cart-standalone">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+        </a>
     </header>
 
-    <div class="product-details-container">
+    <div class="product-container">
         
-        <div class="product-image-side">
-            <img src="" alt="صورة العطر">
+        <!-- صورة العطر -->
+        <div class="product-image-box">
+            <!-- ضع رابط صورة العطر هنا -->
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=800&auto=format&fit=crop" alt="عطر النخبة الفاخر">
         </div>
 
-        <div class="product-info-side">
-            <span class="product-category">عطور مميزة</span>
-            <h1 class="product-title">عطر النخبة الفاخر</h1>
+        <!-- معلومات العطر -->
+        <div class="product-info-box">
+            <span class="product-category">مجموعة العطور الرجالية</span>
+            <h1 id="product-name">عطر النخبة الفاخر</h1>
             
-            <div class="product-price-large" id="detail-price">500 ج.م</div>
-            
-            <p class="product-desc">
-                محاكاة دقيقة ومثالية لأرقى النوتات العطرية العالمية. يبدأ العطر بنفحات منعشة، وينتهي بقاعدة دافئة تمنحك ثباتاً يدوم طوال اليوم وفوحاناً يلفت الأنظار في كل مكان.
+            <p class="product-description">
+                عبوة تجسد الفخامة المطلقة للرجل العصري. تم تصميم هذا العطر خصيصاً ليترك انطباعاً قوياً يدوم طويلاً، حيث يجمع بين الانتعاش في البداية والعمق والأصالة في نهايته. مثالي للمناسبات الرسمية واللقاءات الهامة.
             </p>
 
-            <div class="sizes-title">اختر حجم العبوة:</div>
-            <div class="sizes-options">
-                <input type="radio" name="perfume-size" id="size-35" value="35 مل" onchange="document.getElementById('detail-price').innerText='350 ج.م'">
+            <!-- قسم الهرم العطري الاحترافي -->
+            <div class="fragrance-notes">
+                <h3><i class="fa-solid fa-layer-group" style="margin-left: 8px;"></i> الهرم العطري</h3>
+                <div class="note-level">
+                    <span class="note-title">الافتتاحية:</span>
+                    <span class="note-desc">برغموت منعش، فلفل وردي، ونسمات حمضية.</span>
+                </div>
+                <div class="note-level">
+                    <span class="note-title">قلب العطر:</span>
+                    <span class="note-desc">أخشاب الأرز، زهور السوسن، وباتشولي غني.</span>
+                </div>
+                <div class="note-level">
+                    <span class="note-title">القاعدة:</span>
+                    <span class="note-desc">عود أصيل، مسك عنبري، وجلود فاخرة.</span>
+                </div>
+            </div>
+
+            <!-- السعر المتغير -->
+            <div class="product-price-display" id="product-price" data-price="500">
+                500 ج.م
+            </div>
+
+            <!-- اختيار الحجم -->
+            <h3 style="font-size: 1.2em; margin-bottom: 15px; font-weight: 700;">اختر حجم العبوة:</h3>
+            <div class="sizes-wrapper">
+                <input type="radio" name="perfume-size" id="size-35" value="35 مل" data-price="350" onchange="updateMainPrice(this)">
                 <label for="size-35">35 مل</label>
-
-                <input type="radio" name="perfume-size" id="size-55" value="55 مل" checked onchange="document.getElementById('detail-price').innerText='500 ج.م'">
+                
+                <input type="radio" name="perfume-size" id="size-55" value="55 مل" data-price="500" checked onchange="updateMainPrice(this)">
                 <label for="size-55">55 مل</label>
-
-                <input type="radio" name="perfume-size" id="size-110" value="110 مل" onchange="document.getElementById('detail-price').innerText='900 ج.م'">
+                
+                <input type="radio" name="perfume-size" id="size-110" value="110 مل" data-price="900" onchange="updateMainPrice(this)">
                 <label for="size-110">110 مل</label>
             </div>
 
-            <button class="btn-buy" onclick="let size = document.querySelector('input[name=\'perfume-size\']:checked').value; window.open('https://wa.me/201212946789?text=أهلاً، أريد طلب (عطر النخبة الفاخر) بحجم ' + size, '_blank');">🛒 شراء الآن عبر واتساب</button>
+            <!-- زر الإضافة للسلة -->
+            <button class="btn-add-cart" onclick="addThisToCart()">
+                إضافة إلى السلة <i class="fa-solid fa-cart-plus"></i>
+            </button>
         </div>
+
     </div>
 
-    <footer>
-        <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
-        <p>جميع الحقوق محفوظة © 2026</p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>أخِلَّاء للعطور</h3>
+                <p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="perfumes.html">جميع المنتجات</a></li>
+                    <li><a href="offers.html">العروض والباقات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li>
+                    <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p>
+            <p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p>
+        </div>
     </footer>
 
+    <div id="toast" class="toast">تم إضافة العبوة إلى السلة بنجاح!</div>
+
+    <script>
+        // تحديث السعر بناءً على الحجم المختار
+        function updateMainPrice(radioInput) {
+            const priceDisplay = document.getElementById('product-price');
+            const newPrice = radioInput.getAttribute('data-price');
+            priceDisplay.innerText = newPrice + ' ج.م';
+            priceDisplay.setAttribute('data-price', newPrice);
+        }
+
+        // إضافة المنتج الحالي للسلة
+        function addThisToCart() {
+            const name = document.getElementById('product-name').innerText;
+            const sizeInput = document.querySelector('input[name="perfume-size"]:checked');
+            const size = sizeInput.value;
+            const price = parseInt(sizeInput.getAttribute('data-price'));
+            
+            let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
+            // توليد آي دي عشوائي بسيط عشان نقدر نميز المنتج
+            const uniqueId = 'prod_' + Math.random().toString(36).substr(2, 9);
+            
+            cart.push({ id: uniqueId, name: name, size: size, price: price });
+            localStorage.setItem('akhlaaCart', JSON.stringify(cart));
+            
+            updateCartCount();
+            showToast();
+        }
+
+        // تحديث رقم السلة عند تحميل الصفحة
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        // إظهار تنبيه النجاح
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "toast show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        window.onload = updateCartCount;
+    </script>
 </body>
 </html>
