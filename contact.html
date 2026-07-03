@@ -2,139 +2,53 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخِلَّاء للعطور | تواصل معنا</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { 
-            background-color: #f8f9fa; 
-            color: #222222; 
-            font-family: 'Tajawal', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-        }
-        header { 
-            background-color: #ffffff; 
-            padding: 15px 50px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid #eeeeee; 
-        }
-        .logo-text { color: #000000; font-size: 28px; font-weight: 700; }
-        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #444444; font-weight: 700; font-size: 16px; transition: 0.3s; }
-        nav ul li a:hover { color: #e6c328; }
+        :root { --brand-yellow: #e6c328; --brand-black: #111111; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--brand-yellow); color: var(--brand-black); font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
+        nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; padding: 5px 10px; }
+        nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
+        .cart-icon { position: relative; font-size: 1.2em; font-weight: 900 !important; }
+        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
         
-        /* التصميم الفاخر لقسم التواصل */
-        .luxury-contact-wrapper {
-            max-width: 1100px;
-            margin: 80px auto;
-            display: flex;
-            flex-wrap: wrap;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-radius: 12px;
-            overflow: hidden; /* لضمان زوايا دائرية ناعمة */
-        }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .contact-card { background-color: var(--brand-black); color: var(--brand-yellow); padding: 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); text-align: right; }
+        .contact-card h2 { font-size: 2em; margin-bottom: 25px; font-weight: 900; border-bottom: 2px solid var(--brand-yellow); padding-bottom: 10px; }
+        .contact-info-list { list-style: none; }
+        .contact-info-list li { font-size: 1.2em; margin-bottom: 20px; font-weight: 700; }
+        .contact-info-list i { margin-left: 10px; font-size: 1.3em; }
+        .contact-info-list a { color: var(--brand-yellow); text-decoration: none; }
 
-        /* الجانب الأيمن: معلومات التواصل (أسود وذهبي) */
-        .luxury-info {
-            flex: 1;
-            min-width: 350px;
-            background-color: #111111;
-            color: #ffffff;
-            padding: 60px 50px;
-            position: relative;
-        }
-        .luxury-info h2 {
-            color: #e6c328;
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        .luxury-info p {
-            color: #aaaaaa;
-            margin-bottom: 40px;
-            font-size: 1.1em;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-        /* تنسيق الأيقونات المرسومة */
-        .info-item svg {
-            width: 24px;
-            height: 24px;
-            stroke: #e6c328; /* لون الأيقونة الذهبي */
-        }
-        .info-item a, .info-item span {
-            color: #ffffff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .info-item a:hover { color: #e6c328; }
-
-        /* الجانب الأيسر: نموذج المراسلة (أبيض نقي) */
-        .luxury-form {
-            flex: 1.2;
-            min-width: 350px;
-            background-color: #ffffff;
-            padding: 60px 50px;
-        }
-        .luxury-form h2 {
-            color: #111111;
-            font-size: 2em;
-            margin-bottom: 40px;
-        }
-
-        /* حقول الإدخال العصرية (بدون مربعات) */
-        .input-group {
-            margin-bottom: 35px;
-            position: relative;
-        }
-        .input-group input, .input-group textarea {
-            width: 100%;
-            padding: 10px 0;
-            border: none;
-            border-bottom: 1px solid #cccccc;
-            background-color: transparent;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1.1em;
-            color: #111111;
-            transition: 0.3s;
-            outline: none;
-        }
-        /* التأثير الذهبي عند الكتابة */
-        .input-group input:focus, .input-group textarea:focus {
-            border-bottom: 2px solid #e6c328;
-        }
-        
-        .btn-luxury {
-            display: inline-block;
-            background-color: #111111;
-            color: #e6c328;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .btn-luxury:hover {
-            background-color: #e6c328;
-            color: #111111;
-        }
-
-        footer { background-color: #111111; color: #ffffff; text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 3px solid #e6c328; }
+        .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
+        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); opacity: 0.9; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; font-weight: 700; opacity: 0.9; }
+        .footer-links a:hover { padding-right: 8px; font-weight: 900; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 700; }
+        .footer-contact i { color: var(--brand-yellow); }
+        .footer-contact a { color: var(--brand-yellow); text-decoration: none; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { color: var(--brand-yellow); font-size: 1.8em; }
+        .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-weight: 700; opacity: 0.8; }
+        .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo-text">أخِلَّاء للعطور</div>
+        <div class="logo"><a href="index.html">أخِلَّاء للعطور</a></div>
         <nav>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
@@ -142,68 +56,37 @@
                 <li><a href="offers.html">الباقات والعروض</a></li>
                 <li><a href="musks.html">المسكات</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
+                <li><a href="cart.html" class="cart-icon">🛒 السلة <span class="cart-badge" id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
-
-    <div class="luxury-contact-wrapper">
-        
-        <div class="luxury-info">
-            <h2>دائماً بالقرب منك</h2>
-            <p>خبراء العطور لدينا مستعدون لمساعدتك في اختيار ما يعبر عن شخصيتك.</p>
-
-            <div class="info-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span dir="ltr">+20 121 294 6789</span>
-            </div>
-
-            <div class="info-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                <a href="https://wa.me/201212946789" target="_blank">تواصل عبر واتساب المباشر</a>
-            </div>
-
-            <div class="info-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                <a href="https://www.facebook.com/share/17E5446gaS/" target="_blank">انضم لمجتمعنا على فيسبوك</a>
-            </div>
-
-            <div class="info-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                <a href="https://www.tiktok.com/@akhlaa_fragrances" target="_blank">شاهد إبداعاتنا على تيك توك</a>
-            </div>
-
-            <div class="info-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>مصر، الغربية، المحلة الكبرى</span>
-            </div>
-        </div>
-
-        <div class="luxury-form">
-            <h2>أرسل رسالتك</h2>
-            <form onsubmit="event.preventDefault(); window.open('https://wa.me/201212946789?text=الاسم: ' + document.getElementById('client-name').value + '%0Aالهاتف: ' + document.getElementById('client-phone').value + '%0Aالرسالة: ' + document.getElementById('client-msg').value, '_blank');">
-                
-                <div class="input-group">
-                    <input type="text" id="client-name" placeholder="الاسم الكريم" required>
-                </div>
-                
-                <div class="input-group">
-                    <input type="tel" id="client-phone" placeholder="رقم الهاتف للواتساب" required>
-                </div>
-                
-                <div class="input-group">
-                    <textarea id="client-msg" placeholder="اكتب استفسارك أو طلبك هنا..." rows="4" required></textarea>
-                </div>
-
-                <button type="submit" class="btn-luxury">إرسال الطلب</button>
-            </form>
-        </div>
-
+    <div class="contact-grid reveal">
+        <section class="contact-card">
+            <h2>قنوات التواصل الرسمية</h2>
+            <ul class="contact-info-list">
+                <li><i class="fa-solid fa-phone"></i> هاتف: <a href="tel:+201212946789">+201212946789</a></li>
+                <li><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> واتساب مباشر: <a href="https://wa.me/201212946789" target="_blank">اضغط للمحادثة المباشرة</a></li>
+                <li><i class="fa-brands fa-facebook"></i> فيسبوك: <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
+                <li><i class="fa-brands fa-tiktok"></i> تيك توك: <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank">AkhlaaFragrances@</a></li>
+                <li><i class="fa-solid fa-location-dot"></i> المقر واللوجستيات: جمهورية مصر العربية</li>
+            </ul>
+        </section>
     </div>
-
-    <footer>
-        <div class="logo-text" style="color: #e6c328; margin-bottom: 10px;">أخِلَّاء للعطور</div>
-        <p>جميع الحقوق محفوظة © 2026</p>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col"><h3>أخِلَّاء للعطور</h3><p>متجركم الأول للعبوات العطرية الفاخرة للرجل العصري. جودة تثق بها، وتركيبات عطرية تروي قصتك.</p></div>
+            <div class="footer-col"><h4>روابط سريعة</h4><ul class="footer-links"><li><a href="index.html">الرئيسية</a></li><li><a href="perfumes.html">جميع المنتجات</a></li><li><a href="offers.html">العروض والباقات</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+            <div class="footer-col"><h4>الفئات</h4><ul class="footer-links"><li><a href="perfumes.html">العطور</a></li><li><a href="musks.html">المسكات</a></li></ul></div>
+            <div class="footer-col"><h4>تواصل معنا</h4><ul class="footer-links footer-contact"><li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li><li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li></ul><div class="footer-social"><a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a><a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a></div></div>
+        </div>
+        <hr class="footer-divider"><div class="footer-bottom"><p>جميع الحقوق محفوظة © 2026 أخِلَّاء للعطور</p><p>تصميم وتطوير بواسطة <a href="#">مُحَمَّد بِن رِضَا</a></p></div>
     </footer>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let cart = JSON.parse(localStorage.getItem('akhlaaCart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        });
+    </script>
 </body>
 </html>
