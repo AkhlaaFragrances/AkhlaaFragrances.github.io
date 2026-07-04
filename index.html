@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أخِلَّاء للعطور</title>
+    <title>أخِلَّاء للعطور | الرئيسية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -36,22 +36,49 @@
         }
         /* ----------------------------------------------------------------------- */
 
-        /* الجزء العلوي (القائمة) - ثابت باللون الأسود */
-        header { background-color: var(--brand-black); padding: 15px 5%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--brand-yellow); }
+        /* الهيدر والسلة المستقلة */
+        header { 
+            background-color: var(--brand-black); 
+            padding: 15px 5%; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--brand-yellow); 
+        }
+        
+        .header-right { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
         .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; align-items: center;}
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5px; align-items: center;}
         nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; }
         nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
         
-        .cart-icon { position: relative; font-size: 1.2em; font-weight: 900 !important; }
-        .cart-badge { position: absolute; top: -8px; right: -12px; background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 50%; padding: 2px 6px; font-size: 0.75em; font-weight: bold; border: 2px solid var(--brand-black); }
-        @media (min-width: 768px) { nav ul { margin-top: 0; gap: 20px; } }
+        .cart-standalone {
+            background-color: transparent;
+            border: 2px solid var(--brand-yellow);
+            color: var(--brand-yellow);
+            width: 50px; 
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            border-radius: 12px;
+            font-size: 1.5em;
+            position: relative;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cart-standalone:hover { background-color: var(--brand-yellow); color: var(--brand-black); transform: scale(1.05); }
+        .cart-badge { position: absolute; top: -8px; right: -8px; background-color: #d32f2f; color: #fff; border-radius: 50%; padding: 3px 7px; font-size: 0.6em; font-weight: bold; border: 2px solid var(--brand-black); }
 
-        /* الواجهة (Hero) - أسود */
+        /* الواجهة (Hero) - تم ربطها بملف hero.png المرفوع */
         .hero { position: relative; height: 70vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--brand-black); border-bottom: 3px solid var(--brand-black); }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=2000&auto=format&fit=crop') center/cover;
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.9)), url('hero.png') center/cover no-repeat;
             animation: heroZoom 20s infinite alternate ease-in-out;
             z-index: 1;
         }
@@ -64,18 +91,18 @@
         .btn-main { background-color: var(--brand-yellow); color: var(--brand-black); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 900; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--brand-yellow); }
         .btn-main:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
 
-        /* الأقسام السفلية (خلفية صفراء وعناوين سوداء) */
+        /* الأقسام السفلية */
         .section-wrapper { padding: 80px 5%; text-align: center; }
         .title-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; }
         .section-title { font-size: 2.5em; color: var(--brand-black); font-weight: 900; margin-bottom: 5px; }
         .title-line { width: 80px; height: 4px; background-color: var(--brand-black); border-radius: 2px; }
 
-        /* كروت الفئات (أسود) */
+        /* كروت الفئات */
         .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
         .category-card { background-color: var(--brand-black); height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--brand-yellow); font-size: 1.8em; font-weight: 900; transition: all 0.4s ease; border: 2px solid var(--brand-black); }
         .category-card:hover { transform: translateY(-8px); border-color: var(--brand-yellow); }
 
-        /* كروت المنتجات (أسود) */
+        /* كروت المنتجات */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; justify-items: center; }
         .product-card { background-color: var(--brand-black); border-radius: 15px; padding: 25px; width: 100%; max-width: 320px; display: flex; flex-direction: column; text-align: right; transition: all 0.4s ease; cursor: pointer; border: 2px solid transparent; }
         .product-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); }
@@ -95,7 +122,7 @@
         .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: 2px solid var(--brand-yellow); padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
         .btn-order:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
 
-        /* آراء العملاء (أسود) */
+        /* آراء العملاء */
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .review-card { background-color: var(--brand-black); padding: 35px; border-radius: 15px; text-align: right; border: 1px solid transparent; transition: all 0.3s; }
         .review-card:hover { border-color: var(--brand-yellow); }
@@ -103,7 +130,7 @@
         .review-text { font-size: 1.1em; color: var(--brand-yellow); line-height: 1.8; margin-bottom: 20px; font-style: italic; font-weight: 400; opacity: 0.9; }
         .review-name { font-weight: 900; color: var(--brand-yellow); font-size: 1.2em; }
 
-        /* قسم الأسئلة الشائعة - مخصص للأسود المطابق للصورة */
+        /* الأسئلة الشائعة */
         .faq-wrapper { background-color: var(--brand-black); padding: 60px 5%; border-top: 3px solid var(--brand-black); border-bottom: 3px solid var(--brand-black); }
         .faq-wrapper .section-title { color: var(--brand-yellow); }
         .faq-wrapper .title-line { background-color: var(--brand-yellow); }
@@ -112,7 +139,6 @@
         .faq-item { border-bottom: 1px solid rgba(230, 195, 40, 0.2); padding: 20px 0; }
         .faq-item:last-child { border-bottom: none; }
         
-        /* تصميم الشريط الخاص بالسؤال (يمين: أيقونة ونص / يسار: سهم) */
         .faq-summary { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 700; color: var(--brand-yellow); cursor: pointer; list-style: none; outline: none; transition: opacity 0.3s ease; opacity: 0.9; }
         .faq-summary:hover { opacity: 1; }
         .faq-summary::-webkit-details-marker { display: none; }
@@ -129,28 +155,22 @@
         .faq-content li { margin-bottom: 8px; position: relative; }
         .faq-content li::before { content: "-"; position: absolute; right: -15px; color: var(--brand-yellow); }
 
-        /* الفوتر (أسود) */
+        /* الفوتر */
         .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; border-top: 2px solid var(--brand-yellow); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        
-        .footer-col h3 { color: var(--brand-yellow); font-size: 1.8em; margin-bottom: 20px; font-weight: 900; }
-        .footer-col h4 { color: var(--brand-yellow); font-size: 1.3em; margin-bottom: 15px; font-weight: 900; }
-        
+        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
         .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); font-weight: 400; opacity: 0.9; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
         .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-size: 1em; font-weight: 700; opacity: 0.9; }
         .footer-links a:hover { padding-right: 8px; font-weight: 900; opacity: 1; }
-        
         .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--brand-yellow); font-size: 1em; font-weight: 700; }
         .footer-contact i { color: var(--brand-yellow); font-size: 1.2em; }
         .footer-contact a { color: var(--brand-yellow); text-decoration: none; transition: 0.3s; }
         .footer-contact a:hover { font-weight: 900; }
-        
         .footer-social { display: flex; gap: 15px; margin-top: 20px; }
         .footer-social a { color: var(--brand-yellow); font-size: 1.8em; transition: transform 0.3s; }
         .footer-social a:hover { transform: translateY(-5px); }
-
         .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
         .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; color: var(--brand-yellow); font-weight: 700; opacity: 0.8; }
         .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
@@ -162,31 +182,35 @@
 <body>
 
     <header>
-        <div class="logo">
-            <a href="index.html">أخِلَّاء للعطور</a>
+        <div class="header-right">
+            <div class="logo">
+                <a href="index.html">أخِلَّاء للعطور</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="perfumes.html">المجموعات العطرية</a></li>
+                    <li><a href="offers.html">الباقات والعروض</a></li>
+                    <li><a href="musks.html">المسكات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="perfumes.html">المجموعات العطرية</a></li>
-                <li><a href="offers.html">الباقات والعروض</a></li>
-                <li><a href="musks.html">المسكات</a></li>
-                <li><a href="contact.html">تواصل معنا</a></li>
-                <li><a href="cart.html" class="cart-icon">🛒 السلة <span class="cart-badge" id="cart-count">0</span></a></li>
-            </ul>
-        </nav>
+        <a href="cart.html" class="cart-standalone">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+        </a>
     </header>
 
     <div class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>دع كل عطر يروي قصتك</h1>
-            <p>عبوات صُممت بنوتات عطرية متدرجة لتعكس حضورك المميز.</p>
+            <p>لكل عطر حكاية ... اختر الحكاية التي تشبهك</p>
             <a href="#products" class="btn-main">تسوّق الآن</a>
         </div>
     </div>
 
-    <!-- كلاس reveal وضع على الـ container ليظهر السطر ككتلة واحدة متزامنة -->
     <div class="section-wrapper reveal">
         <div class="title-container">
             <h2 class="section-title">تسوق حسب الفئة</h2>
@@ -205,16 +229,13 @@
             <div class="title-line"></div>
         </div>
         <div class="products-grid">
-            
             <div class="product-card" onclick="window.location.href='product1.html';">
                 <div class="product-image-container">
                     <img src="" alt="" class="product-image">
                 </div>
                 <h3 class="product-name" id="name-p1">عطر النخبة الفاخر</h3>
                 <p class="product-desc">عبوة تجسد الفخامة للرجل العصري، بهرم عطري يبدأ بنوتات الحمضيات، وقلب غني بالباتشولي، لينتهي بقاعدة خشبية مكثفة.</p>
-                
                 <div class="product-price" id="price-p1" data-price="500">500 ج.م / 55 مل</div>
-                
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p1" id="p1-35" value="35 مل" data-price="350" onchange="updatePrice('p1', this)">
                     <label for="p1-35">35 مل</label>
@@ -232,9 +253,7 @@
                 </div>
                 <h3 class="product-name" id="name-p2">عطر الجاذبية</h3>
                 <p class="product-desc">عبوة تعكس الرقي والأناقة بنوتات افتتاحية من الزعفران، وقلب عطري من أخشاب الأرز، وقاعدة من العود الأصيل.</p>
-                
                 <div class="product-price" id="price-p2" data-price="450">450 ج.م / 55 مل</div>
-                
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p2" id="p2-35" value="35 مل" data-price="300" onchange="updatePrice('p2', this)">
                     <label for="p2-35">35 مل</label>
@@ -245,7 +264,6 @@
                 </div>
                 <button class="btn-order" onclick="event.stopPropagation(); addToCart('p2');">أضف إلى السلة 🛒</button>
             </div>
-
         </div>
     </div>
 
@@ -268,14 +286,12 @@
         </div>
     </div>
 
-    <!-- قسم الأسئلة الشائعة بتصميم مطابق للصورة -->
     <div class="faq-wrapper reveal">
         <div class="title-container">
             <h2 class="section-title">الأسئلة الشائعة</h2>
             <div class="title-line"></div>
         </div>
         <div class="faq-container">
-            
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -284,11 +300,8 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">
-                    نستخدم كحول طبي (إيثانول) آمن تماماً للاستخدام.
-                </div>
+                <div class="faq-content">نستخدم كحول طبي (إيثانول) آمن تماماً للاستخدام.</div>
             </details>
-
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -297,11 +310,8 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">
-                    جميع العطور لدينا معتقة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى التعتيق لضمان نضوج الهرم العطري.
-                </div>
+                <div class="faq-content">جميع العطور لدينا معتقة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى التعتيق لضمان نضوج الهرم العطري.</div>
             </details>
-
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -310,11 +320,8 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">
-                    يختلف الثبات والفوحان من عطر لآخر ويتم توضيح ذلك بشكل دقيق في وصف كل منتج بناءً على نوتاته.
-                </div>
+                <div class="faq-content">يختلف الثبات والفوحان من عطر لآخر ويتم توضيح ذلك بشكل دقيق في وصف كل منتج بناءً على نوتاته.</div>
             </details>
-
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -323,34 +330,11 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">
-                    مدة الشحن تختلف حسب الموقع ولكن في المتوسط تتراوح بين 3 إلى 5 أيام.
-                </div>
+                <div class="faq-content">مدة الشحن تختلف حسب الموقع ولكن في المتوسط تتراوح بين 3 إلى 5 أيام.</div>
             </details>
-
-            <details class="faq-item">
-                <summary class="faq-summary">
-                    <div class="faq-title-group">
-                        <i class="fa-regular fa-circle-question faq-icon"></i>
-                        <span>كيف تقيس ثبات وفوحان العطر بشكل صحيح؟</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-down faq-arrow"></i>
-                </summary>
-                <div class="faq-content">
-                    للحصول على تقييم دقيق يُفضل استخدام العطر بالطريقة التالية:
-                    <ul>
-                        <li>استخدام 8 إلى 12 رشة (تطبيق كامل للعبوة).</li>
-                        <li>التجربة في مكان مغلق وليس مفتوح.</li>
-                        <li>أن يكون الجسم نظيفاً ومرطباً جيداً.</li>
-                        <li>عدم استخدام أي عطر آخر قبل التجربة.</li>
-                    </ul>
-                </div>
-            </details>
-
         </div>
     </div>
 
-    <!-- الفوتر الختامي -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
@@ -367,22 +351,15 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>الفئات</h4>
-                <ul class="footer-links">
-                    <li><a href="perfumes.html">العطور</a></li>
-                    <li><a href="musks.html">المسكات</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
                 <h4>تواصل معنا</h4>
                 <ul class="footer-links footer-contact">
                     <li><i class="fa-solid fa-phone"></i> <a href="https://wa.me/201212946789" target="_blank">+201212946789</a></li>
                     <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
                 </ul>
                 <div class="footer-social">
-                    <a href="https://wa.me/201212946789" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" aria-label="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -429,29 +406,18 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // الأنيميشن المتزامن (القسم كله يظهر مع بعضه)
         document.addEventListener("DOMContentLoaded", function() {
             updateCartCount();
-
             const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
             const revealOnScroll = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
-                    
                     entry.target.classList.add('active');
                     observer.unobserve(entry.target);
                 });
             }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealOnScroll.observe(el);
-            });
+            revealElements.forEach(el => revealOnScroll.observe(el));
         });
     </script>
 </body>
