@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخِلَّاء للعطور | الرئيسية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- تغيير الخط إلى Cairo ليكون أكثر فخامة وعصرية (تريندي) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* الهوية البصرية الصارمة: أصفر وأسود فقط */
@@ -16,11 +17,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* الخلفية الأساسية للموقع أصفر صريح */
+        /* الخلفية الأساسية للموقع أصفر صريح - استخدام الخط الجديد */
         body { 
             background-color: var(--brand-yellow);
             color: var(--brand-black); 
-            font-family: 'Tajawal', sans-serif; 
+            font-family: 'Cairo', sans-serif; 
             overflow-x: hidden; 
         }
 
@@ -51,7 +52,7 @@
         }
         
         .header-right { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo a { color: var(--brand-yellow); font-size: 28px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5px; align-items: center;}
         nav ul li a { text-decoration: none; color: var(--brand-yellow); font-weight: 700; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; }
         nav ul li a:hover { background-color: var(--brand-yellow); color: var(--brand-black); border-radius: 5px; }
@@ -74,7 +75,7 @@
         .cart-standalone:hover { background-color: var(--brand-yellow); color: var(--brand-black); transform: scale(1.05); }
         .cart-badge { position: absolute; top: -8px; right: -8px; background-color: #d32f2f; color: #fff; border-radius: 50%; padding: 3px 7px; font-size: 0.6em; font-weight: bold; border: 2px solid var(--brand-black); }
 
-        /* الواجهة (Hero) - تم ربطها بملف hero.png المرفوع */
+        /* الواجهة (Hero) - مع ضبط الخطوط والنصوص الجديدة */
         .hero { position: relative; height: 70vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background-color: var(--brand-black); border-bottom: 3px solid var(--brand-black); }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -86,10 +87,11 @@
         .hero-content { position: relative; z-index: 2; padding: 20px; animation: fadeIn 1.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
-        .hero h1 { font-size: 3.5em; color: var(--brand-yellow); margin-bottom: 15px; font-weight: 900; }
-        .hero p { font-size: 1.4em; color: var(--brand-yellow); font-weight: 400; margin-bottom: 35px; opacity: 0.9; }
-        .btn-main { background-color: var(--brand-yellow); color: var(--brand-black); padding: 15px 40px; text-decoration: none; font-size: 1.2em; font-weight: 900; border-radius: 30px; transition: all 0.3s ease; display: inline-block; border: 2px solid var(--brand-yellow); }
-        .btn-main:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
+        /* تنسيق نصوص الـ Hero الجديدة لتطابق الصور المرفقة */
+        .hero h1 { font-size: 4.5em; color: var(--brand-yellow); margin-bottom: 10px; font-weight: 900; letter-spacing: -1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.5em; color: var(--brand-yellow); font-weight: 400; margin-bottom: 40px; opacity: 0.9; }
+        .btn-main { background-color: var(--brand-yellow); color: var(--brand-black); padding: 15px 45px; text-decoration: none; font-size: 1.3em; font-weight: 900; border-radius: 35px; transition: all 0.3s ease; display: inline-block; box-shadow: 0 4px 15px rgba(230, 195, 40, 0.3); }
+        .btn-main:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4); }
 
         /* الأقسام السفلية */
         .section-wrapper { padding: 80px 5%; text-align: center; }
@@ -99,7 +101,7 @@
 
         /* كروت الفئات */
         .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-        .category-card { background-color: var(--brand-black); height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--brand-yellow); font-size: 1.8em; font-weight: 900; transition: all 0.4s ease; border: 2px solid var(--brand-black); }
+        .category-card { background-color: var(--brand-black); height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--brand-yellow); font-size: 2em; font-weight: 900; transition: all 0.4s ease; border: 2px solid var(--brand-black); }
         .category-card:hover { transform: translateY(-8px); border-color: var(--brand-yellow); }
 
         /* كروت المنتجات */
@@ -111,15 +113,15 @@
         .product-card:hover .product-image { transform: scale(1.05); opacity: 1; }
         
         .product-name { color: var(--brand-yellow); font-size: 1.6em; margin: 0 0 10px 0; font-weight: 900; }
-        .product-desc { color: var(--brand-yellow); font-size: 0.95em; line-height: 1.6; margin-bottom: 15px; font-weight: 400; opacity: 0.8; }
-        .product-price { color: var(--brand-yellow); font-size: 1.4em; font-weight: 900; margin-bottom: 20px; }
+        .product-desc { color: var(--brand-yellow); font-size: 1em; line-height: 1.6; margin-bottom: 15px; font-weight: 400; opacity: 0.8; }
+        .product-price { color: var(--brand-yellow); font-size: 1.5em; font-weight: 900; margin-bottom: 20px; }
         
         .sizes-wrapper { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; cursor: default; }
         .sizes-wrapper input[type="radio"] { display: none; }
-        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 25px; cursor: pointer; font-size: 0.95em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; background-color: var(--brand-black); }
+        .sizes-wrapper label { padding: 8px 18px; border: 1px solid var(--brand-yellow); border-radius: 25px; cursor: pointer; font-size: 1em; font-weight: 700; color: var(--brand-yellow); transition: all 0.3s ease; background-color: var(--brand-black); }
         .sizes-wrapper input[type="radio"]:checked + label { background-color: var(--brand-yellow); color: var(--brand-black); }
         
-        .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: 2px solid var(--brand-yellow); padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.1em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
+        .btn-order { display: block; background-color: var(--brand-yellow); color: var(--brand-black); border: 2px solid var(--brand-yellow); padding: 14px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.2em; transition: all 0.3s ease; cursor: pointer; width: 100%; text-align: center; }
         .btn-order:hover { background-color: var(--brand-black); color: var(--brand-yellow); }
 
         /* آراء العملاء */
@@ -139,7 +141,7 @@
         .faq-item { border-bottom: 1px solid rgba(230, 195, 40, 0.2); padding: 20px 0; }
         .faq-item:last-child { border-bottom: none; }
         
-        .faq-summary { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 700; color: var(--brand-yellow); cursor: pointer; list-style: none; outline: none; transition: opacity 0.3s ease; opacity: 0.9; }
+        .faq-summary { display: flex; justify-content: space-between; align-items: center; font-size: 1.2em; font-weight: 700; color: var(--brand-yellow); cursor: pointer; list-style: none; outline: none; transition: opacity 0.3s ease; opacity: 0.9; }
         .faq-summary:hover { opacity: 1; }
         .faq-summary::-webkit-details-marker { display: none; }
         
@@ -150,7 +152,7 @@
         details[open] .faq-summary .faq-arrow { transform: rotate(180deg); }
         details[open] .faq-summary { opacity: 1; }
 
-        .faq-content { padding: 15px 35px 0 0; color: var(--brand-yellow); font-size: 1em; line-height: 1.8; font-weight: 400; opacity: 0.8; }
+        .faq-content { padding: 15px 35px 0 0; color: var(--brand-yellow); font-size: 1.1em; line-height: 1.8; font-weight: 400; opacity: 0.8; }
         .faq-content ul { list-style-type: none; padding-right: 15px; margin-top: 10px; }
         .faq-content li { margin-bottom: 8px; position: relative; }
         .faq-content li::before { content: "-"; position: absolute; right: -15px; color: var(--brand-yellow); }
@@ -158,13 +160,14 @@
         /* الفوتر */
         .site-footer { background-color: var(--brand-black); color: var(--brand-yellow); padding: 60px 5% 20px; text-align: right; border-top: 2px solid var(--brand-yellow); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h3, .footer-col h4 { color: var(--brand-yellow); margin-bottom: 20px; font-weight: 900; }
-        .footer-col p { font-size: 1em; line-height: 1.6; color: var(--brand-yellow); font-weight: 400; opacity: 0.9; }
+        .footer-col h3 { color: var(--brand-yellow); font-size: 1.8em; margin-bottom: 20px; font-weight: 900; }
+        .footer-col h4 { color: var(--brand-yellow); font-size: 1.4em; margin-bottom: 15px; font-weight: 900; }
+        .footer-col p { font-size: 1.1em; line-height: 1.6; color: var(--brand-yellow); font-weight: 400; opacity: 0.9; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-size: 1em; font-weight: 700; opacity: 0.9; }
+        .footer-links a { color: var(--brand-yellow); text-decoration: none; transition: all 0.3s; font-size: 1.1em; font-weight: 700; opacity: 0.9; }
         .footer-links a:hover { padding-right: 8px; font-weight: 900; opacity: 1; }
-        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--brand-yellow); font-size: 1em; font-weight: 700; }
+        .footer-contact li { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--brand-yellow); font-size: 1.1em; font-weight: 700; }
         .footer-contact i { color: var(--brand-yellow); font-size: 1.2em; }
         .footer-contact a { color: var(--brand-yellow); text-decoration: none; transition: 0.3s; }
         .footer-contact a:hover { font-weight: 900; }
@@ -172,10 +175,10 @@
         .footer-social a { color: var(--brand-yellow); font-size: 1.8em; transition: transform 0.3s; }
         .footer-social a:hover { transform: translateY(-5px); }
         .footer-divider { border: 0; border-top: 1px solid rgba(230, 195, 40, 0.2); margin: 20px 0; }
-        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1em; color: var(--brand-yellow); font-weight: 700; opacity: 0.8; }
+        .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 1.1em; color: var(--brand-yellow); font-weight: 700; opacity: 0.8; }
         .footer-bottom a { color: var(--brand-yellow); text-decoration: none; font-weight: 900; }
 
-        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.1em; font-weight: bold; border: 1px solid var(--brand-yellow); }
+        .toast { visibility: hidden; min-width: 250px; background-color: var(--brand-black); color: var(--brand-yellow); text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 1.2em; font-weight: bold; border: 1px solid var(--brand-yellow); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
     </style>
 </head>
@@ -205,12 +208,14 @@
     <div class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
+            <!-- النصوص الجديدة بالخط الفاخر مطابقاً للصور -->
             <h1>دع كل عطر يروي قصتك</h1>
             <p>لكل عطر حكاية ... اختر الحكاية التي تشبهك</p>
             <a href="#products" class="btn-main">تسوّق الآن</a>
         </div>
     </div>
 
+    <!-- كلاس reveal وضع على الـ container ليظهر السطر ككتلة واحدة متزامنة -->
     <div class="section-wrapper reveal">
         <div class="title-container">
             <h2 class="section-title">تسوق حسب الفئة</h2>
@@ -229,13 +234,16 @@
             <div class="title-line"></div>
         </div>
         <div class="products-grid">
+            
             <div class="product-card" onclick="window.location.href='product1.html';">
                 <div class="product-image-container">
                     <img src="" alt="" class="product-image">
                 </div>
                 <h3 class="product-name" id="name-p1">عطر النخبة الفاخر</h3>
                 <p class="product-desc">عبوة تجسد الفخامة للرجل العصري، بهرم عطري يبدأ بنوتات الحمضيات، وقلب غني بالباتشولي، لينتهي بقاعدة خشبية مكثفة.</p>
+                
                 <div class="product-price" id="price-p1" data-price="500">500 ج.م / 55 مل</div>
+                
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p1" id="p1-35" value="35 مل" data-price="350" onchange="updatePrice('p1', this)">
                     <label for="p1-35">35 مل</label>
@@ -253,7 +261,9 @@
                 </div>
                 <h3 class="product-name" id="name-p2">عطر الجاذبية</h3>
                 <p class="product-desc">عبوة تعكس الرقي والأناقة بنوتات افتتاحية من الزعفران، وقلب عطري من أخشاب الأرز، وقاعدة من العود الأصيل.</p>
+                
                 <div class="product-price" id="price-p2" data-price="450">450 ج.م / 55 مل</div>
+                
                 <div class="sizes-wrapper" onclick="event.stopPropagation();">
                     <input type="radio" name="size-p2" id="p2-35" value="35 مل" data-price="300" onchange="updatePrice('p2', this)">
                     <label for="p2-35">35 مل</label>
@@ -264,6 +274,7 @@
                 </div>
                 <button class="btn-order" onclick="event.stopPropagation(); addToCart('p2');">أضف إلى السلة 🛒</button>
             </div>
+
         </div>
     </div>
 
@@ -286,12 +297,14 @@
         </div>
     </div>
 
+    <!-- قسم الأسئلة الشائعة -->
     <div class="faq-wrapper reveal">
         <div class="title-container">
             <h2 class="section-title">الأسئلة الشائعة</h2>
             <div class="title-line"></div>
         </div>
         <div class="faq-container">
+            
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -300,8 +313,11 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">نستخدم كحول طبي (إيثانول) آمن تماماً للاستخدام.</div>
+                <div class="faq-content">
+                    نستخدم كحول طبي (إيثانول) آمن تماماً للاستخدام.
+                </div>
             </details>
+
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -310,8 +326,11 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">جميع العطور لدينا معتقة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى التعتيق لضمان نضوج الهرم العطري.</div>
+                <div class="faq-content">
+                    جميع العطور لدينا معتقة، ولكن نخبرك مسبقاً إن كانت تحتاج إلى التعتيق لضمان نضوج الهرم العطري.
+                </div>
             </details>
+
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -320,8 +339,11 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">يختلف الثبات والفوحان من عطر لآخر ويتم توضيح ذلك بشكل دقيق في وصف كل منتج بناءً على نوتاته.</div>
+                <div class="faq-content">
+                    يختلف الثبات والفوحان من عطر لآخر ويتم توضيح ذلك بشكل دقيق في وصف كل منتج بناءً على نوتاته.
+                </div>
             </details>
+
             <details class="faq-item">
                 <summary class="faq-summary">
                     <div class="faq-title-group">
@@ -330,11 +352,15 @@
                     </div>
                     <i class="fa-solid fa-chevron-down faq-arrow"></i>
                 </summary>
-                <div class="faq-content">مدة الشحن تختلف حسب الموقع ولكن في المتوسط تتراوح بين 3 إلى 5 أيام.</div>
+                <div class="faq-content">
+                    مدة الشحن تختلف حسب الموقع ولكن في المتوسط تتراوح بين 3 إلى 5 أيام.
+                </div>
             </details>
+
         </div>
     </div>
 
+    <!-- الفوتر الختامي -->
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col">
@@ -345,9 +371,16 @@
                 <h4>روابط سريعة</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="index.html#products">جميع المنتجات</a></li>
+                    <li><a href="perfumes.html">جميع المنتجات</a></li>
                     <li><a href="offers.html">العروض والباقات</a></li>
                     <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>الفئات</h4>
+                <ul class="footer-links">
+                    <li><a href="perfumes.html">العطور</a></li>
+                    <li><a href="musks.html">المسكات</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -357,9 +390,9 @@
                     <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank">أخِلَّاء للعطور - Akhlaa Fragrances</a></li>
                 </ul>
                 <div class="footer-social">
-                    <a href="https://wa.me/201212946789" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/201212946789" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/AkhlaaFragrances" target="_blank" aria-label="فيسبوك"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@AkhlaaFragrances" target="_blank" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -406,18 +439,29 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
+        // الأنيميشن المتزامن 
         document.addEventListener("DOMContentLoaded", function() {
             updateCartCount();
+
             const revealElements = document.querySelectorAll('.reveal');
-            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
             const revealOnScroll = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
+                    
                     entry.target.classList.add('active');
                     observer.unobserve(entry.target);
                 });
             }, revealOptions);
-            revealElements.forEach(el => revealOnScroll.observe(el));
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
         });
     </script>
 </body>
